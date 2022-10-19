@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             colorFilter: ColorFilter.mode(Color(0xaa000000), BlendMode.darken),
-            image: AssetImage("assets/images/login_bg.png"),
+            image: AssetImage("images/login_bg.png"),
             fit: BoxFit.cover,
           ),
         ),

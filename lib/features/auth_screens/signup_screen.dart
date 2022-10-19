@@ -1,10 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:tourdine/constants/text_style.dart';
 
 import '../home_screen/home_screen.dart';
 import 'logic/logic.dart';
 import 'login_screen.dart';
-import 'widgets/text_field.dart';
+import 'widgets/widget.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -19,6 +21,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   late TextEditingController passwordController;
   late TextEditingController confirmPasswordController;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  String picture = "";
 
   @override
   void initState() {
@@ -49,6 +53,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
     }
   }
 
+  void setProfilePicture() async {
+    picture = await pickImage();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             colorFilter: ColorFilter.mode(Color(0xaa000000), BlendMode.darken),
-            image: AssetImage("assets/images/signup_bg.png"),
+            image: AssetImage("images/signup_bg.png"),
             fit: BoxFit.cover,
           ),
         ),
@@ -78,23 +87,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     const SizedBox(height: 50),
                     Stack(
-                      children: const [
+                      children: [
                         CircleAvatar(
                           radius: 50,
-                          backgroundColor: Color(0x44ffffff),
-                          child: Icon(
-                            Icons.person_outline,
-                            size: 75,
-                            color: Color(0xffffffff),
-                          ),
+                          backgroundColor: const Color(0x44ffffff),
+                          child: (picture.isNotEmpty)
+                              ? Image.file(File(picture))
+                              : const Icon(
+                                  Icons.person_outline,
+                                  size: 75,
+                                  color: Color(0xffffffff),
+                                ),
                         ),
                         Positioned(
                           right: 0,
                           bottom: 0,
-                          child: CircleAvatar(
-                            radius: 16,
-                            backgroundColor: Color(0x55ff0000),
-                            child: Icon(Icons.arrow_upward),
+                          child: GestureDetector(
+                            onTap: setProfilePicture,
+                            child: const CircleAvatar(
+                              radius: 16,
+                              backgroundColor: Color(0x55ff0000),
+                              child: Icon(Icons.arrow_upward),
+                            ),
                           ),
                         )
                       ],
