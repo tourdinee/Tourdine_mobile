@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tourdine/constants/text_style.dart';
 
-import '../logic/validator.dart';
+import '../logic/logic.dart';
 
 class CustomTextField extends StatefulWidget {
   const CustomTextField({
@@ -30,12 +31,26 @@ class _CustomTextFieldState extends State<CustomTextField> {
       keyboardType: (widget.hintText == "Email")
           ? TextInputType.emailAddress
           : TextInputType.text,
+      style: textStyle1,
       decoration: InputDecoration(
+        border: InputBorder.none,
+        fillColor: const Color(0x44ffffff),
+        filled: true,
+        prefixIcon: Icon(
+          (widget.hintText == "Name")
+              ? Icons.person_outline
+              : (widget.hintText == "Email")
+                  ? Icons.email_outlined
+                  : Icons.lock_outline,
+          color: const Color(0xffffffff),
+        ),
         hintText: widget.hintText,
+        hintStyle: textStyle1,
         suffixIcon: (widget.hintText == "Password")
             ? GestureDetector(
                 child: Icon(
                   isVisible ? Icons.visibility : Icons.visibility_off,
+                  color: const Color(0xffffffff),
                 ),
                 onTap: () {
                   setState(() {
