@@ -65,7 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             colorFilter: ColorFilter.mode(Color(0xaa000000), BlendMode.darken),
-            image: AssetImage("images/signup_bg.png"),
+            image: AssetImage("assets/images/signup_bg.png"),
             fit: BoxFit.cover,
           ),
         ),
