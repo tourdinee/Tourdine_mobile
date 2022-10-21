@@ -33,7 +33,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
           : TextInputType.text,
       style: textStyle1,
       decoration: InputDecoration(
-        border: InputBorder.none,
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
+        errorBorder:
+            const OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
+        focusedBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.black87)),
         fillColor: const Color(0x44ffffff),
         filled: true,
         prefixIcon: Icon(

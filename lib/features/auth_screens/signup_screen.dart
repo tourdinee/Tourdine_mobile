@@ -1,9 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:tourdine/constants/text_style.dart';
+import 'package:tourdine/features/auth_screens/otp_screen.dart';
 
-import '../home_screen/home_screen.dart';
 import 'logic/logic.dart';
 import 'login_screen.dart';
 import 'widgets/widget.dart';
@@ -46,7 +44,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     if (formKey.currentState!.validate()) {
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
+          builder: (context) => const OtpScreen(),
         ),
         (route) => false,
       );
@@ -54,8 +52,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   void setProfilePicture() async {
-    picture = await pickImage();
-    setState(() {});
+    final res = await pickImage();
+    print("picture: $res");
+    if (res.isNotEmpty) {
+      picture = res;
+      setState(() {});
+    }
   }
 
   @override
@@ -70,93 +72,51 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
         ),
         child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(35),
-            child: Form(
-                key: formKey,
+          child: CustomScrollView(slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 35, vertical: 16),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Row(
-                      children: const [
+                      children: [
                         Text(
                           "Sign Up",
                           style: headTextStyle,
                         ),
                       ],
                     ),
-                    const SizedBox(height: 50),
-                    Stack(
-                      children: [
-                        CircleAvatar(
-                          radius: 50,
-                          backgroundColor: const Color(0x44ffffff),
-                          child: (picture.isNotEmpty)
-                              ? Image.file(File(picture))
-                              : const Icon(
-                                  Icons.person_outline,
-                                  size: 75,
-                                  color: Color(0xffffffff),
-                                ),
-                        ),
-                        Positioned(
-                          right: 0,
-                          bottom: 0,
-                          child: GestureDetector(
-                            onTap: setProfilePicture,
-                            child: const CircleAvatar(
-                              radius: 16,
-                              backgroundColor: Color(0x55ff0000),
-                              child: Icon(Icons.arrow_upward),
-                            ),
-                          ),
-                        )
-                      ],
+                    const Expanded(flex: 1, child: SizedBox()),
+                    ProfilePicture(
+                      picture: picture,
+                      setProfilePic: setProfilePicture,
                     ),
                     const SizedBox(height: 10),
-                    const Text(
+                    Text(
                       "Profile Picture",
                       style: textStyle1,
                     ),
                     const SizedBox(height: 45),
-                    CustomTextField(
-                      controller: emailController,
-                      hintText: "Email",
+                    SignUpFormInputContainer(
+                      formKey: formKey,
+                      emailController: emailController,
+                      usernameController: usernameController,
+                      passwordController: passwordController,
+                      confirmPasswordController: confirmPasswordController,
                     ),
                     const SizedBox(height: 20),
-                    CustomTextField(
-                      controller: usernameController,
-                      hintText: "Name",
-                    ),
-                    const SizedBox(height: 20),
-                    CustomTextField(
-                      controller: passwordController,
-                      isObscure: true,
-                      hintText: "Password",
-                    ),
-                    const SizedBox(height: 20),
-                    CustomTextField(
-                      controller: confirmPasswordController,
-                      isObscure: true,
-                      hintText: "Password",
-                    ),
-                    const SizedBox(height: 20),
-                    SizedBox(
-                      width: double.infinity,
-                      height: 40,
-                      child: ElevatedButton(
-                        onPressed: signUpCredential,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0x55ff0000),
-                        ),
-                        child: const Text("Create Account"),
-                      ),
+                    AuthButton(
+                      text: "Sign Up",
+                      callback: signUpCredential,
                     ),
                     const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
+                        Text(
                           "Already have an account? ",
                           style: textStyle2,
                         ),
@@ -172,9 +132,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ],
                     ),
+                    const Expanded(flex: 1, child: SizedBox()),
                   ],
-                )),
-          ),
+                ),
+              ),
+            ),
+          ]),
         ),
       ),
     );
