@@ -1,23 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tourdine/constants/text_style.dart';
 
-class OtpPage extends StatefulWidget {
-  const OtpPage({super.key});
+class OtpScreen extends StatefulWidget {
+  const OtpScreen({super.key});
 
   @override
-  State<OtpPage> createState() => _OtpPageState();
+  State<OtpScreen> createState() => _OtpScreenState();
 }
 
-class _OtpPageState extends State<OtpPage> {
+class _OtpScreenState extends State<OtpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage("assets/images/otpBackgroundImg.png"),
                   fit: BoxFit.fill),
@@ -28,7 +28,7 @@ class _OtpPageState extends State<OtpPage> {
             child: Padding(
               padding: const EdgeInsets.only(left: 30, right: 30, top: 40),
               child: Center(
-                child: Container(
+                child: SizedBox(
                   height: MediaQuery.of(context).size.height * 0.9,
                   width: 400,
                   child: Column(
@@ -41,7 +41,7 @@ class _OtpPageState extends State<OtpPage> {
                             fontSize: 32,
                             color: Colors.white),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       Text(
@@ -51,7 +51,7 @@ class _OtpPageState extends State<OtpPage> {
                             fontSize: 14,
                             color: Colors.white),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 40,
                       ),
                       SizedBox(
@@ -63,7 +63,7 @@ class _OtpPageState extends State<OtpPage> {
                             hintText: "OTP",
                             hintStyle:
                                 GoogleFonts.montserrat(color: Colors.white),
-                            prefixIcon: Icon(
+                            prefixIcon: const Icon(
                               Icons.key,
                               color: Colors.white,
                             ),
@@ -74,7 +74,7 @@ class _OtpPageState extends State<OtpPage> {
                           maxLines: 1,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextButton(
@@ -82,7 +82,7 @@ class _OtpPageState extends State<OtpPage> {
                             showCupertinoModalPopup(
                               context: context,
                               builder: ((context) {
-                                return Center(
+                                return const Center(
                                   child: CircularProgressIndicator(
                                     color: Colors.red,
                                     strokeWidth: 5,
@@ -90,10 +90,61 @@ class _OtpPageState extends State<OtpPage> {
                                 );
                               }),
                             );
-                            await Future.delayed(Duration(milliseconds: 2000));
+                            await Future.delayed(
+                                const Duration(milliseconds: 2000));
                             Navigator.pop(context);
+                            showCupertinoModalPopup(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return Material(
+                                    color: Colors.transparent,
+                                    child: Container(
+                                      color: Colors.black.withOpacity(0.45),
+                                      child: Center(
+                                          child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          const Image(
+                                            image: AssetImage(
+                                                "assets/images/successlogo.png"),
+                                            height: 200,
+                                            width: 200,
+                                          ),
+                                          Text(
+                                            "OTP has been sent",
+                                            style: textStyle2,
+                                          )
+                                        ],
+                                      )),
+                                    ),
+                                  );
+                                });
+                            await Future.delayed(
+                                const Duration(milliseconds: 2000));
+                            Navigator.pop(context);
+
                             print("closed");
                           },
+                          // () async {
+                          //   showCupertinoModalPopup(
+                          //     context: context,
+                          //     builder: ((context) {
+                          //       return const Center(
+                          //         child: CircularProgressIndicator(
+                          //           color: Colors.red,
+                          //           strokeWidth: 5,
+                          //         ),
+                          //       );
+                          //     }),
+                          //   );
+                          //   await Future.delayed(
+                          //       const Duration(milliseconds: 2000));
+                          //   Navigator.pop(context);
+                          //   print("closed");
+                          // },
                           child: Text(
                             "Resend OTP",
                             style: GoogleFonts.montserrat(
@@ -106,7 +157,7 @@ class _OtpPageState extends State<OtpPage> {
                           showCupertinoModalPopup(
                             context: context,
                             builder: ((context) {
-                              return Center(
+                              return const Center(
                                 child: CircularProgressIndicator(
                                   color: Colors.red,
                                   strokeWidth: 5,
@@ -114,33 +165,9 @@ class _OtpPageState extends State<OtpPage> {
                               );
                             }),
                           );
-                          await Future.delayed(Duration(milliseconds: 2000));
+                          await Future.delayed(
+                              const Duration(milliseconds: 2000));
                           Navigator.pop(context);
-                          showCupertinoModalPopup(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return Container(
-                                  color: Colors.black.withOpacity(0.45),
-                                  child: Center(
-                                      child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Image(
-                                        image: AssetImage(
-                                            "assets/images/successlogo.png"),
-                                        height: 200,
-                                        width: 200,
-                                      ),
-                                      Text("OTP has been sent")
-                                    ],
-                                  )),
-                                );
-                              });
-                          await Future.delayed(Duration(milliseconds: 2000));
-                          Navigator.pop(context);
-
                           print("closed");
                         },
                         child: Padding(
@@ -150,7 +177,7 @@ class _OtpPageState extends State<OtpPage> {
                             height: 50,
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Color.fromRGBO(237, 28, 36, 0.45),
+                                color: const Color.fromRGBO(237, 28, 36, 0.45),
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               child: Center(

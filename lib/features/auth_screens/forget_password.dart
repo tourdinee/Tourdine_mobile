@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tourdine/constants/text_style.dart';
 import 'package:tourdine/features/auth_screens/widgets/widget.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
@@ -8,17 +9,19 @@ class ForgetPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController controller = TextEditingController();
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Forget Password"),
-      ),
+      backgroundColor: const Color(0xff333333),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            CustomTextField(controller: controller, hintText: "pin"),
+            const SizedBox(height: 30),
+            CustomTextField(controller: controller, hintText: "enter Email"),
             const SizedBox(height: 16),
-            const Text("Forget Password"),
+            Text(
+              "Retrieve Password",
+              style: textStyle2,
+            ),
           ],
         ),
       )),

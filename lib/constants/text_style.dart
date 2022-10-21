@@ -1,21 +1,20 @@
 import 'package:flutter/rendering.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-const headTextStyle = TextStyle(
-  color: Color(0xffffffff),
+TextStyle headTextStyle = GoogleFonts.montserrat(
+  color: const Color(0xffffffff),
   fontSize: 24,
   fontWeight: FontWeight.bold,
 );
 
-const textStyle1 = TextStyle(
-  color: Color(0xffffffff),
+TextStyle textStyle1 = GoogleFonts.montserrat(
+  color: const Color(0xffffffff),
   fontSize: 16,
 );
 
-const textStyle2 = TextStyle(
-  color: Color(0xffffffff),
+TextStyle textStyle2 = GoogleFonts.montserrat(
+  color: const Color(0xffffffff),
   fontSize: 18,
   decorationStyle: TextDecorationStyle.dashed,
-  decorationColor: Color(
-    0xffffffff,
-  ),
+  decorationColor: const Color(0xffffffff),
 );

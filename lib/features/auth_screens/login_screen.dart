@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tourdine/constants/text_style.dart';
 import 'package:tourdine/features/auth_screens/forget_password.dart';
+import 'package:tourdine/features/auth_screens/otp_screen.dart';
 import 'package:tourdine/features/auth_screens/signup_screen.dart';
-import 'package:tourdine/features/home_screen/home_screen.dart';
 
 import 'logic/logic.dart';
 import 'widgets/widget.dart';
@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (formKey.currentState!.validate()) {
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
+          builder: (context) => const OtpScreen(),
         ),
         (route) => false,
       );
@@ -57,10 +57,11 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
         child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(35),
-            child: Form(
-              key: formKey,
+            child: CustomScrollView(slivers: [
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: Padding(
+              padding: const EdgeInsets.all(35),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -68,49 +69,20 @@ class _LoginScreenState extends State<LoginScreen> {
                     flex: 3,
                     child: SizedBox(),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const Text(
-                        "Skip",
-                        style: textStyle2,
-                      ),
-                      const SizedBox(width: 6),
-                      GestureDetector(
-                        child: Container(
-                          alignment: Alignment.center,
-                          padding: const EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: const Color(0xffff0000), width: 2.5),
-                              shape: BoxShape.circle),
-                          child: const Icon(
-                            Icons.arrow_forward_outlined,
-                            size: 16,
-                            color: Color(0xffff0000),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
+                  SkipButton(callback: () {}),
                   const Expanded(
                     flex: 4,
                     child: SizedBox(),
                   ),
-                  const Text(
+                  Text(
                     "Login",
                     style: headTextStyle,
                   ),
                   const SizedBox(height: 40),
-                  CustomTextField(
-                    controller: emailController,
-                    hintText: "Email",
-                  ),
-                  const SizedBox(height: 20),
-                  CustomTextField(
-                    controller: passwordController,
-                    hintText: "Password",
-                    isObscure: true,
+                  SignInFormInputContainer(
+                    formKey: formKey,
+                    emailController: emailController,
+                    passwordController: passwordController,
                   ),
                   const SizedBox(height: 20),
                   Row(
@@ -121,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           navigateTo(
                               const ForgetPasswordScreen(), context, true);
                         },
-                        child: const Text(
+                        child: Text(
                           "Forget Password",
                           style: textStyle2,
                         ),
@@ -129,19 +101,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                   const SizedBox(height: 45),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 40,
-                    child: ElevatedButton(
-                      onPressed: loginInCredential,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0x55ff0000),
-                      ),
-                      child: const Text(
-                        "Login",
-                        style: textStyle1,
-                      ),
-                    ),
+                  AuthButton(
+                    text: "Login",
+                    callback: loginInCredential,
                   ),
                   const SizedBox(height: 45),
                   Row(
@@ -149,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       GestureDetector(
                         onTap: () => navigateTo(const SignUpScreen(), context),
-                        child: const Text(
+                        child: Text(
                           "Create New Account",
                           style: textStyle2,
                         ),
@@ -163,8 +125,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
             ),
-          ),
-        ),
+          )
+        ])),
       ),
     );
   }

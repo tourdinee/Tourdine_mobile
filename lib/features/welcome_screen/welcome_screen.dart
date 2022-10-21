@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class WelcomePage extends StatefulWidget {
-  const WelcomePage({super.key});
+class WelcomeScreen extends StatefulWidget {
+  const WelcomeScreen({super.key});
 
   @override
-  State<WelcomePage> createState() => _WelcomePageState();
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
-class _WelcomePageState extends State<WelcomePage> {
+class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage("assets/images/welcomeBackgroundImg.png"),
                   fit: BoxFit.cover),
@@ -26,7 +26,7 @@ class _WelcomePageState extends State<WelcomePage> {
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.only(top: 220, left: 30, right: 30),
-                child: Container(
+                child: SizedBox(
                   height: MediaQuery.of(context).size.height * 0.5,
                   width: 400,
                   child: Column(
@@ -47,7 +47,7 @@ class _WelcomePageState extends State<WelcomePage> {
                               fontSize: 32,
                               fontWeight: FontWeight.w700,
                               color: Colors.red)),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       Text(
@@ -56,7 +56,7 @@ class _WelcomePageState extends State<WelcomePage> {
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
                               color: Colors.white)),
-                      SizedBox(
+                      const SizedBox(
                         height: 40,
                       ),
                       GestureDetector(
@@ -65,7 +65,7 @@ class _WelcomePageState extends State<WelcomePage> {
                           height: 50,
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Color.fromRGBO(237, 28, 36, 0.45),
+                              color: const Color.fromRGBO(237, 28, 36, 0.45),
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: Center(
