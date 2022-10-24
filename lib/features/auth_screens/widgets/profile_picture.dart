@@ -19,9 +19,8 @@ class ProfilePicture extends StatelessWidget {
         CircleAvatar(
           radius: 50,
           backgroundColor: const Color(0x44ffffff),
-          backgroundImage: FileImage(
-            (picture.isNotEmpty) ? File(picture) : File(""),
-          ),
+          backgroundImage:
+              (picture.isNotEmpty) ? FileImage(File(picture)) : null,
           child: (picture.isNotEmpty)
               ? null
               : const Icon(
@@ -35,10 +34,24 @@ class ProfilePicture extends StatelessWidget {
           bottom: 0,
           child: GestureDetector(
             onTap: setProfilePic,
-            child: const CircleAvatar(
-              radius: 16,
-              backgroundColor: Color(0x55ff0000),
-              child: Icon(Icons.arrow_upward),
+            child: CircleAvatar(
+              radius: 14,
+              backgroundColor: const Color(0x55ff0000),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.arrow_upward,
+                    size: 16,
+                  ),
+                  Container(
+                    width: 10,
+                    height: 1,
+                    color: Colors.white,
+                  ),
+                  const SizedBox(height: 2)
+                ],
+              ),
             ),
           ),
         )

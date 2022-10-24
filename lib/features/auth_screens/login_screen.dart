@@ -3,6 +3,7 @@ import 'package:tourdine/constants/text_style.dart';
 import 'package:tourdine/features/auth_screens/forget_password.dart';
 import 'package:tourdine/features/auth_screens/otp_screen.dart';
 import 'package:tourdine/features/auth_screens/signup_screen.dart';
+import 'package:tourdine/features/welcome_screen/welcome_screen.dart';
 
 import 'logic/logic.dart';
 import 'widgets/widget.dart';
@@ -18,6 +19,8 @@ class _LoginScreenState extends State<LoginScreen> {
   late TextEditingController emailController;
   late TextEditingController passwordController;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  String message = "";
 
   @override
   void initState() {
@@ -36,12 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void loginInCredential() {
     if (formKey.currentState!.validate()) {
-      Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(
-          builder: (context) => const OtpScreen(),
-        ),
-        (route) => false,
-      );
+      navigateTo(const OtpScreen(), context, true);
     }
   }
 
@@ -69,7 +67,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     flex: 3,
                     child: SizedBox(),
                   ),
-                  SkipButton(callback: () {}),
+                  SkipButton(
+                    callback: () => navigateTo(const WelcomeScreen(), context),
+                  ),
                   const Expanded(
                     flex: 4,
                     child: SizedBox(),
@@ -89,12 +89,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       GestureDetector(
-                        onTap: () {
-                          navigateTo(
-                              const ForgetPasswordScreen(), context, true);
-                        },
+                        onTap: () =>
+                            navigateTo(const ForgetPasswordScreen(), context),
                         child: Text(
-                          "Forget Password",
+                          "Forget Password?",
                           style: textStyle2,
                         ),
                       ),
@@ -113,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onTap: () => navigateTo(const SignUpScreen(), context),
                         child: Text(
                           "Create New Account",
-                          style: textStyle2,
+                          style: textStyle2style,
                         ),
                       ),
                     ],
