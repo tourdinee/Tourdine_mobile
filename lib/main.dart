@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tourdine/constants/text_style.dart';
 import 'package:tourdine/features/auth_screens/login_screen.dart';
 
 void main(List<String> args) {
@@ -10,9 +11,22 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      theme: ThemeData(
+        scaffoldBackgroundColor: const Color(0xffFDE8E9),
+        iconTheme: const IconThemeData(),
+        appBarTheme: AppBarTheme(
+          iconTheme: const IconThemeData(
+            color: Colors.black,
+          ),
+          elevation: 0,
+          centerTitle: true,
+          backgroundColor: Colors.transparent,
+          titleTextStyle: titleTextStyle,
+        ),
+      ),
+      home: const LoginScreen(),
     );
   }
 }

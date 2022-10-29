@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tourdine/constants/constants.dart';
 
 import '../../helpers/loading/loading_screen.dart';
 import '../welcome_screen/welcome_screen.dart';
@@ -22,7 +23,7 @@ class _OtpScreenState extends State<OtpScreen> {
       decoration: const BoxDecoration(
         image: DecorationImage(
           colorFilter: ColorFilter.mode(Color(0x87000000), BlendMode.darken),
-          image: AssetImage("assets/images/otpBackgroundImg.png"),
+          image: AssetImage("$imagesPath/otpBackgroundImg.png"),
           fit: BoxFit.cover,
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tourdine/constants/constants.dart';
 
 import '../../../constants/text_style.dart';
 
@@ -19,7 +20,7 @@ class OtpSent extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Image(
-              image: AssetImage("assets/images/successlogo.png"),
+              image: AssetImage("$imagesPath/successlogo.png"),
               height: 200,
               width: 200,
             ),

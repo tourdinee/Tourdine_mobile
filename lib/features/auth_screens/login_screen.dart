@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tourdine/constants/constants.dart';
 import 'package:tourdine/constants/text_style.dart';
 import 'package:tourdine/features/auth_screens/forget_password.dart';
 import 'package:tourdine/features/auth_screens/otp_screen.dart';
@@ -50,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             colorFilter: ColorFilter.mode(Color(0xaa000000), BlendMode.darken),
-            image: AssetImage("assets/images/login_bg.png"),
+            image: AssetImage("$imagesPath/login_bg.png"),
             fit: BoxFit.cover,
           ),
         ),

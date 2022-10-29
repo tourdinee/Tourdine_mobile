@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tourdine/constants/constants.dart';
+import 'package:tourdine/features/auth_screens/logic/logic.dart';
+import 'package:tourdine/features/home/home_bottom_nav_bar.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -17,7 +20,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/images/welcomeBackgroundImg.png"),
+                  image: AssetImage("$imagesPath/welcomeBackgroundImg.png"),
                   fit: BoxFit.cover),
             ),
           ),
@@ -60,6 +63,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         height: 40,
                       ),
                       GestureDetector(
+                        onTap: () =>
+                            navigateTo(const HomeBottomNavBar(), context),
                         child: SizedBox(
                           width: double.infinity,
                           height: 50,
