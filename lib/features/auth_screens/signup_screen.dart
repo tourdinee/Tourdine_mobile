@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:tourdine/constants/constants.dart';
 import 'package:tourdine/constants/text_style.dart';
 import 'package:tourdine/features/auth_screens/login_screen.dart';
 import 'package:tourdine/features/auth_screens/otp_screen.dart';
@@ -68,7 +69,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             colorFilter: ColorFilter.mode(Color(0xaa000000), BlendMode.darken),
-            image: AssetImage("assets/images/signup_bg.png"),
+            image: AssetImage("$imagesPath/signup_bg.png"),
             fit: BoxFit.cover,
           ),
         ),

@@ -12,6 +12,11 @@ TextStyle textStyle1 = GoogleFonts.montserrat(
   fontSize: 16,
 );
 
+TextStyle smallTextStyle = GoogleFonts.montserrat(
+  color: const Color(0xffffffff),
+  fontSize: 10,
+);
+
 TextStyle textStyle2 = GoogleFonts.montserrat(
   color: const Color(0xffffffff),
   fontSize: 18,
@@ -45,4 +50,15 @@ TextStyle textStyle2red = GoogleFonts.montserrat(
   decorationStyle: TextDecorationStyle.solid,
   decorationThickness: 3,
   decoration: TextDecoration.underline,
+);
+
+TextStyle titleTextStyle = GoogleFonts.montserrat(
+  color: Colors.black,
+  fontSize: 18,
+  fontWeight: FontWeight.bold,
+);
+
+TextStyle smallestTextStyle = GoogleFonts.montserrat(
+  fontSize: 8,
+  color: Colors.red,
 );

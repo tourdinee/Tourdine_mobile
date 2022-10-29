@@ -7,7 +7,7 @@ Future<void> navigateTo(Widget screen, BuildContext context,
   if (toGoBack) {
     LoadingScreen().show(context: context, text: "navigating");
     await Future.delayed(
-      const Duration(seconds: 2),
+      const Duration(milliseconds: 300),
       () => LoadingScreen().hide(),
     );
     Navigator.of(context).push(
@@ -19,7 +19,7 @@ Future<void> navigateTo(Widget screen, BuildContext context,
   }
   LoadingScreen().show(context: context, text: "navigating");
   await Future.delayed(
-    const Duration(seconds: 2),
+    const Duration(milliseconds: 300),
     () => LoadingScreen().hide(),
   );
   Navigator.of(context).pushAndRemoveUntil(
