@@ -1,9 +1,10 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:tourdine/constants/text_style.dart';
+import 'package:tourdine/features/auth_screens/login_screen.dart';
 import 'package:tourdine/features/auth_screens/otp_screen.dart';
 
 import 'logic/logic.dart';
-import 'login_screen.dart';
 import 'widgets/widget.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -113,24 +114,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       callback: signUpCredential,
                     ),
                     const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Already have an account? ",
-                          style: textStyle2,
-                        ),
-                        GestureDetector(
-                          onTap: () => navigateTo(const LoginScreen(), context),
-                          child: const Text(
-                            "Login",
-                            style: TextStyle(
-                              color: Color(0xffff0000),
-                              fontSize: 18,
-                            ),
+                    RichText(
+                      textScaleFactor: .9,
+                      text: TextSpan(
+                        text: "Already have an account? ",
+                        children: [
+                          TextSpan(
+                            text: "Login",
+                            style: textStyle2red,
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () => navigateTo(
+                                    const LoginScreen(),
+                                    context,
+                                  ),
                           ),
-                        ),
-                      ],
+                        ],
+                        style: textStyle2style,
+                      ),
                     ),
                     const Expanded(flex: 1, child: SizedBox()),
                   ],

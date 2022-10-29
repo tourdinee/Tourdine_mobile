@@ -20,6 +20,7 @@ class SkipButton extends StatelessWidget {
         ),
         const SizedBox(width: 6),
         GestureDetector(
+          onTap: callback,
           child: Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.all(4),

@@ -28,6 +28,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
       validator: (val) => validate(val, widget.hintText),
       obscureText: widget.isObscure ? isVisible : false,
       enableSuggestions: false,
+      autocorrect: (widget.hintText == "Password") ? false : true,
+      cursorColor: const Color(0xffffffff),
       keyboardType: (widget.hintText == "Email")
           ? TextInputType.emailAddress
           : TextInputType.text,
@@ -40,6 +42,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             borderSide: BorderSide(color: Colors.black87)),
         fillColor: const Color(0x44ffffff),
         filled: true,
+        errorStyle: const TextStyle(color: Color(0xffffffff)),
         prefixIcon: Icon(
           (widget.hintText == "Name")
               ? Icons.person_outline

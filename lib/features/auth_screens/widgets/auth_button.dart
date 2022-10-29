@@ -14,13 +14,12 @@ class AuthButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 40,
       child: ElevatedButton(
         onPressed: callback,
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0x55ff0000),
-        ),
-        child: const Text("Create Account"),
+            backgroundColor: const Color(0x55ff0000),
+            padding: const EdgeInsets.all(16)),
+        child: Text(text),
       ),
     );
   }
