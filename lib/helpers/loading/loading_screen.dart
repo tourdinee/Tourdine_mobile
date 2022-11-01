@@ -64,12 +64,12 @@ class LoadingScreen {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const SizedBox(
-                        width: 60,
-                        height: 60,
+                        width: 55,
+                        height: 55,
                         child: CircularProgressIndicator(
                           backgroundColor: Color(0xff880000),
                           color: Color(0xffff0000),
-                          strokeWidth: 6,
+                          strokeWidth: 8,
                         ),
                       ),
                       StreamBuilder(

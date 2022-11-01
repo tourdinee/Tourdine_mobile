@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tourdine/constants/constants.dart';
 import 'package:tourdine/constants/text_style.dart';
+import 'package:tourdine/features/auth_screens/logic/logic.dart';
+
+import 'view_photo/view_photo.dart';
 
 class MenuPhotoScreen extends StatelessWidget {
   const MenuPhotoScreen({super.key});
@@ -36,19 +39,26 @@ class MenuPhotoScreen extends StatelessWidget {
                   itemCount: 6,
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 12,
-                      crossAxisSpacing: 12,
-                      childAspectRatio: 1.18),
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 12,
+                    crossAxisSpacing: 12,
+                    childAspectRatio: 1.18,
+                  ),
                   itemBuilder: (context, index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        image: const DecorationImage(
-                          image: AssetImage(
-                            "$imagesPath/photo_2.png",
+                    return GestureDetector(
+                      onTap: () => navigateTo(
+                          const ViewPhotoScreen(photo: "photo_2.png"),
+                          context,
+                          true),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          image: const DecorationImage(
+                            image: AssetImage(
+                              "$imagesPath/photo_2.png",
+                            ),
+                            fit: BoxFit.fitWidth,
                           ),
-                          fit: BoxFit.fitWidth,
                         ),
                       ),
                     );

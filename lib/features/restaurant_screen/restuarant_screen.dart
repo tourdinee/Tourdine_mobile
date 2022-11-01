@@ -50,7 +50,7 @@ class RestaurantScreen extends StatelessWidget {
                         title: "Opening Hours: Monday - Sunday (12am-11pm)",
                       ),
                       const ContactListTile(
-                        imgPath: "call_red.svg",
+                        imgPath: "call-red.svg",
                         title: "+2347002000700",
                       ),
                       const SizedBox(height: 10),
@@ -68,6 +68,7 @@ class RestaurantScreen extends StatelessWidget {
                             onPressed: () => navigateTo(
                               const MenuPhotoScreen(),
                               context,
+                              true,
                             ),
                             child: Text(
                               "See all (8)",

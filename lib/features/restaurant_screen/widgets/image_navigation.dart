@@ -26,7 +26,7 @@ class RestaurantScreenImageNavigation extends StatelessWidget {
           child: Row(
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () => Navigator.pop(context),
                 icon: SvgPicture.asset(
                   "$iconsPath/back.svg",
                   color: Colors.white,

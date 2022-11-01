@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tourdine/constants/constants.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:tourdine/features/auth_screens/logic/logic.dart';
-import 'package:tourdine/features/trending_screen/trending_screen.dart';
-
+import '../../../../constants/constants.dart';
 import '../../../../constants/text_style.dart';
+import '../../../auth_screens/logic/logic.dart';
+import '../../../trending_screen/trending_screen.dart';
 import 'widgets.dart';
 
 class SearchTendingBottomStaticLayout extends StatelessWidget {
   const SearchTendingBottomStaticLayout({
     Key? key,
+    required this.controller,
   }) : super(key: key);
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +27,11 @@ class SearchTendingBottomStaticLayout extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 30),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0),
-            child: SearchBar(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: SearchBar(
+              controller: controller,
+            ),
           ),
           const SizedBox(height: 20),
           Padding(
@@ -53,7 +55,8 @@ class SearchTendingBottomStaticLayout extends StatelessWidget {
                           isOpen: true,
                         ),
                       ),
-                      context),
+                      context,
+                      true),
                   child: Text(
                     "See all (20)",
                     style: textStyle1.copyWith(fontSize: 12),
@@ -69,8 +72,13 @@ class SearchTendingBottomStaticLayout extends StatelessWidget {
 }
 
 class SearchBar extends StatelessWidget {
-  const SearchBar({Key? key, this.showShadow = false}) : super(key: key);
+  const SearchBar({
+    Key? key,
+    this.showShadow = false,
+    required this.controller,
+  }) : super(key: key);
   final bool? showShadow;
+  final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -89,12 +97,13 @@ class SearchBar extends StatelessWidget {
               : null),
       child: Row(
         children: [
-          IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset("$iconsPath/search.svg")),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SvgPicture.asset("$iconsPath/search.svg"),
+          ),
           Expanded(
             child: TextField(
-                onTap: () {},
+                controller: controller,
                 textAlign: TextAlign.center,
                 decoration: const InputDecoration(
                   border: InputBorder.none,
@@ -104,7 +113,7 @@ class SearchBar extends StatelessWidget {
           IconButton(
             onPressed: () {},
             icon: SvgPicture.asset(
-              "$iconsPath/filter_add.svg",
+              "$iconsPath/filter-add.svg",
               color: Colors.black,
             ),
           ),

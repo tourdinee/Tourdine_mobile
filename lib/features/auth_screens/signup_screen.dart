@@ -44,12 +44,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   void signUpCredential() {
     if (formKey.currentState!.validate()) {
-      Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(
-          builder: (context) => const OtpScreen(),
-        ),
-        (route) => false,
-      );
+      navigateTo(const OtpScreen(), context);
     }
   }
 

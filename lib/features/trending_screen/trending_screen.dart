@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../constants/constants.dart';
 import '../home/home_screen/widgets/widgets.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -16,18 +14,14 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController controller = TextEditingController();
     return Scaffold(
       appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(18.0),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: SvgPicture.asset(
-              "$iconsPath/back.svg",
-            ),
-          ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios),
         ),
         title: Text(title),
       ),
@@ -36,8 +30,9 @@ class CategoriesScreen extends StatelessWidget {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              const SearchBar(
+              SearchBar(
                 showShadow: true,
+                controller: controller,
               ),
               const SizedBox(height: 20),
               Expanded(
