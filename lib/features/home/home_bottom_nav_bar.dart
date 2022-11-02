@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tourdine/constants/color.dart';
 import 'package:tourdine/constants/constants.dart';
 import 'package:tourdine/features/home/favorite_screen/favorite_screen.dart';
 import 'package:tourdine/features/home/profile_screen/profile_screen.dart';
@@ -18,7 +19,9 @@ class _HomeBottomNavBarState extends State<HomeBottomNavBar> {
     const Home(),
     const FavoriteScreen(),
     const SizedBox(),
-    const Center(child: Text("Notification")),
+    const Center(
+      child: Text("Notification"),
+    ),
     const ProfileScreen()
   ];
   int currentIndex = 0;
@@ -30,13 +33,13 @@ class _HomeBottomNavBarState extends State<HomeBottomNavBar> {
         child: screen[currentIndex],
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xffff0000),
+        backgroundColor: mainColor,
         onPressed: () {},
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: const Color(0xffff0000),
+        selectedItemColor: mainColor,
         onTap: (value) {
           if (value != 2) {
             currentIndex = value;
@@ -63,9 +66,9 @@ class _HomeBottomNavBarState extends State<HomeBottomNavBar> {
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset("$iconsPath/notification.svg"),
-            activeIcon: const Icon(
+            activeIcon: Icon(
               Icons.notifications,
-              color: Color(0xffff0000),
+              color: mainColor,
             ),
             label: "Notifications",
           ),

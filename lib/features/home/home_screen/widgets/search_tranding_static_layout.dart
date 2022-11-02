@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../constants/color.dart';
 import '../../../../constants/constants.dart';
 import '../../../../constants/text_style.dart';
 import '../../../auth_screens/logic/logic.dart';
@@ -17,9 +18,9 @@ class SearchTendingBottomStaticLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        color: Colors.red,
-        boxShadow: [
+      decoration: BoxDecoration(
+        color: mainColor,
+        boxShadow: const [
           BoxShadow(color: Colors.grey, offset: Offset(0, 2), blurRadius: 2),
         ],
       ),
@@ -71,7 +72,7 @@ class SearchTendingBottomStaticLayout extends StatelessWidget {
   }
 }
 
-class SearchBar extends StatelessWidget {
+class SearchBar extends StatefulWidget {
   const SearchBar({
     Key? key,
     this.showShadow = false,
@@ -79,13 +80,19 @@ class SearchBar extends StatelessWidget {
   }) : super(key: key);
   final bool? showShadow;
   final TextEditingController controller;
+
+  @override
+  State<SearchBar> createState() => _SearchBarState();
+}
+
+class _SearchBarState extends State<SearchBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
           color: const Color(0xffffffff),
           borderRadius: BorderRadius.circular(12),
-          boxShadow: (showShadow == true)
+          boxShadow: (widget.showShadow == true)
               ? [
                   BoxShadow(
                     color: Colors.red.shade100,
@@ -103,7 +110,10 @@ class SearchBar extends StatelessWidget {
           ),
           Expanded(
             child: TextField(
-                controller: controller,
+                onChanged: (value) {
+                  setState(() {});
+                },
+                controller: widget.controller,
                 textAlign: TextAlign.center,
                 decoration: const InputDecoration(
                   border: InputBorder.none,

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tourdine/features/home/profile_screen/setting_screen.dart';
 
+import '../../../constants/color.dart';
+
 class LanguageScreen extends StatefulWidget {
   const LanguageScreen({super.key});
 
@@ -100,8 +102,8 @@ class LanguageSelectedBox extends StatelessWidget {
             style: GoogleFonts.montserrat(fontSize: 12),
           ),
           Radio(
-            activeColor: Colors.red,
-            fillColor: MaterialStateProperty.all(Colors.red),
+            activeColor: mainColor,
+            fillColor: MaterialStateProperty.all(mainColor),
             value: language,
             groupValue: selectedLanguage,
             onChanged: (value) => callback(value),

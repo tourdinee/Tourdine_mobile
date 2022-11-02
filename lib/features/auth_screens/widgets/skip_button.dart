@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tourdine/constants/color.dart';
 
 import '../../../constants/text_style.dart';
 
@@ -25,12 +26,12 @@ class SkipButton extends StatelessWidget {
             alignment: Alignment.center,
             padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
-                border: Border.all(color: const Color(0xffff0000), width: 2.5),
+                border: Border.all(color: mainColor, width: 2.5),
                 shape: BoxShape.circle),
-            child: const Icon(
+            child: Icon(
               Icons.arrow_forward_outlined,
               size: 16,
-              color: Color(0xffff0000),
+              color: mainColor,
             ),
           ),
         )

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'color.dart';
+
 TextStyle headTextStyle = GoogleFonts.montserrat(
   color: const Color(0xffffffff),
   fontSize: 24,
@@ -31,7 +33,7 @@ TextStyle textStyle2style = GoogleFonts.montserrat(
       offset: Offset(0, -5),
     )
   ],
-  decorationColor: Colors.red,
+  decorationColor: mainColor,
   decorationStyle: TextDecorationStyle.solid,
   decorationThickness: 3,
   decoration: TextDecoration.underline,
@@ -41,12 +43,12 @@ TextStyle textStyle2red = GoogleFonts.montserrat(
   fontSize: 16,
   color: Colors.transparent,
   shadows: [
-    const Shadow(
-      color: Colors.red,
-      offset: Offset(0, -5),
+    Shadow(
+      color: mainColor,
+      offset: const Offset(0, -5),
     )
   ],
-  decorationColor: Colors.red,
+  decorationColor: mainColor,
   decorationStyle: TextDecorationStyle.solid,
   decorationThickness: 3,
   decoration: TextDecoration.underline,
@@ -60,5 +62,5 @@ TextStyle titleTextStyle = GoogleFonts.montserrat(
 
 TextStyle smallestTextStyle = GoogleFonts.montserrat(
   fontSize: 8,
-  color: Colors.red,
+  color: mainColor,
 );

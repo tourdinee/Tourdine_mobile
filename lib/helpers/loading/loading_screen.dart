@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:tourdine/constants/color.dart';
 
 typedef CloseLoadingScreen = bool Function();
 typedef UpdateLoadingScreen = bool Function(String?);
@@ -63,12 +64,12 @@ class LoadingScreen {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(
+                      SizedBox(
                         width: 55,
                         height: 55,
                         child: CircularProgressIndicator(
-                          backgroundColor: Color(0xff880000),
-                          color: Color(0xffff0000),
+                          backgroundColor: const Color(0xff880000),
+                          color: mainColor,
                           strokeWidth: 8,
                         ),
                       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tourdine/constants/color.dart';
 import 'package:tourdine/constants/constants.dart';
 import 'package:tourdine/features/auth_screens/logic/logic.dart';
 import 'package:tourdine/features/welcome_screen/welcome_screen.dart';
@@ -36,7 +37,7 @@ class AccountVerified extends StatelessWidget {
                   context,
                 ),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xffff0000),
+                  backgroundColor: mainColor,
                 ),
                 child: const Text("Next"),
               ),

@@ -6,6 +6,7 @@ import 'package:tourdine/features/auth_screens/logic/logic.dart';
 import 'package:tourdine/features/auth_screens/login_screen.dart';
 import 'package:tourdine/features/home/profile_screen/password_screen.dart';
 
+import '../../../constants/color.dart';
 import 'language_screen.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -53,20 +54,20 @@ class SettingScreen extends StatelessWidget {
                           child: Center(
                             child: SizedBox(
                               width: MediaQuery.of(context).size.width * 0.75,
-                              height: 120,
+                              height: 140,
                               child: Container(
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(12),
-                                    border: Border.all(color: Colors.red)),
+                                    border: Border.all(color: mainColor)),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
                                       "Are you sure you want to Exit",
                                       style: textStyle1.copyWith(
-                                          color: Colors.black87, fontSize: 14),
+                                          color: Colors.black87),
                                     ),
                                     const SizedBox(height: 16),
                                     Row(
@@ -76,8 +77,8 @@ class SettingScreen extends StatelessWidget {
                                         ElevatedButton(
                                             style: ElevatedButton.styleFrom(
                                                 backgroundColor: Colors.white,
-                                                side: const BorderSide(
-                                                    color: Colors.red)),
+                                                side: BorderSide(
+                                                    color: mainColor)),
                                             onPressed: () {
                                               Navigator.pop(context);
                                             },
@@ -92,7 +93,7 @@ class SettingScreen extends StatelessWidget {
                                         ),
                                         ElevatedButton(
                                             style: ElevatedButton.styleFrom(
-                                                backgroundColor: Colors.red),
+                                                backgroundColor: mainColor),
                                             onPressed: () {
                                               isLogout = true;
                                               navigateTo(
@@ -164,9 +165,9 @@ class SettingSubTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         border: Border.symmetric(
-          horizontal: BorderSide(color: Colors.red),
+          horizontal: BorderSide(color: mainColor),
         ),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),

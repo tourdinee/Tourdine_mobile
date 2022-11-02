@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tourdine/constants/color.dart';
 
 class PasswordSCreen extends StatelessWidget {
   const PasswordSCreen({super.key});
@@ -35,8 +36,7 @@ class PasswordSCreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xffff0000)),
+              style: ElevatedButton.styleFrom(backgroundColor: mainColor),
               child: const Text("Update Password"),
             )
           ],
@@ -64,7 +64,7 @@ class InputBox extends StatelessWidget {
         hintStyle: GoogleFonts.montserrat(),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14),
-          borderSide: const BorderSide(color: Colors.red),
+          borderSide: BorderSide(color: mainColor),
         ),
       ),
     );

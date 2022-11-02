@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tourdine/constants/color.dart';
 import 'package:tourdine/constants/constants.dart';
 import 'package:tourdine/constants/text_style.dart';
 import 'package:tourdine/features/auth_screens/logic/logic.dart';
@@ -56,7 +57,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 CircleAvatar(
                   radius: 50,
-                  backgroundColor: const Color(0x44ffffff),
+                  backgroundColor: const Color(0xff000000),
                   backgroundImage:
                       (picture.isNotEmpty) ? FileImage(File(picture)) : null,
                   child: (picture.isNotEmpty)
@@ -64,7 +65,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       : const Icon(
                           Icons.person_outline,
                           size: 75,
-                          color: Color(0xff000000),
+                          color: Color(0xffffffff),
                         ),
                 ),
                 if (isEditProfile)
@@ -103,20 +104,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       children: [
                         Text(
                           "John Adeniyi",
-                          style: textStyle1.copyWith(color: Colors.black),
+                          style: textStyle1.copyWith(
+                              color: Colors.black, fontWeight: FontWeight.w800),
                         ),
                         const SizedBox(height: 2),
                         Text(
                           "johnadeniyi@gail.com",
                           style: textStyle1.copyWith(
                             color: Colors.black,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                         const SizedBox(height: 16),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xffff0000)),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 25),
+                              backgroundColor: mainColor),
                           onPressed: () {
                             showDialog(
                               context: context,
@@ -125,8 +129,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   color: Colors.transparent,
                                   child: Center(
                                     child: SizedBox(
-                                      width: 120,
-                                      height: 160,
+                                      width: 160,
+                                      height: 180,
                                       child: Container(
                                         decoration: BoxDecoration(
                                           borderRadius:
@@ -180,32 +184,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 : SizedBox(
                     child: Column(
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 35.0),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 35.0),
                           child: TextField(
                             decoration: InputDecoration(
                               contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 10.0),
+                                  const EdgeInsets.symmetric(horizontal: 10.0),
                               hintText: "Name",
                               border: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Color(0xffff0000),
+                                  color: mainColor,
                                 ),
                               ),
                             ),
                           ),
                         ),
                         const SizedBox(height: 20),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 35.0),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 35.0),
                           child: TextField(
                             decoration: InputDecoration(
                               contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 10.0),
+                                  const EdgeInsets.symmetric(horizontal: 10.0),
                               hintText: "Email",
                               border: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Color(0xffff0000),
+                                  color: mainColor,
                                 ),
                               ),
                             ),
@@ -214,7 +218,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         const SizedBox(height: 20),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xffff0000)),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 25),
+                              backgroundColor: mainColor),
                           onPressed: () {
                             setState(() {
                               isEditProfile = !isEditProfile;
