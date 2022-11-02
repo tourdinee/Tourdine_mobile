@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tourdine/constants/text_style.dart';
+import 'package:tourdine/features/home/home_screen/provider/provider.dart';
 
 import 'widgets/widgets.dart';
 
@@ -30,7 +32,15 @@ class _HomeState extends State<Home> {
                   controller: controller,
                 ),
                 const SearchAndTrendingScrollLayout(),
-                if (controller.text.isNotEmpty) const SearchPanel(),
+                Consumer(
+                  builder: (context, ref, child) {
+                    if (ref.watch(searchBarText.notifier).state.isNotEmpty) {
+                      return const SearchPanel();
+                    }
+                    return const SizedBox();
+                  },
+                )
+                // if (controller.text.isNotEmpty) const SearchPanel(),
               ],
             ),
             const SizedBox(height: 20),

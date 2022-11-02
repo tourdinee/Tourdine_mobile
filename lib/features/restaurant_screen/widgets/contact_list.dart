@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../constants/color.dart';
 import '../../../constants/constants.dart';
 import '../../../constants/text_style.dart';
 
@@ -29,7 +30,7 @@ class ContactListTile extends StatelessWidget {
             title,
             style: smallTextStyle.copyWith(
                 color: (title.contains("@") && title.contains(".com"))
-                    ? Colors.red
+                    ? mainColor
                     : Colors.black),
           )
         ],

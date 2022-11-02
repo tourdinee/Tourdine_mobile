@@ -4,6 +4,8 @@ import 'package:tourdine/constants/constants.dart';
 import 'package:tourdine/features/auth_screens/logic/logic.dart';
 import 'package:tourdine/features/home/home_bottom_nav_bar.dart';
 
+import '../../constants/color.dart';
+
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
 
@@ -49,7 +51,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           style: GoogleFonts.montserrat(
                               fontSize: 32,
                               fontWeight: FontWeight.w700,
-                              color: Colors.red)),
+                              color: mainColor)),
                       const SizedBox(
                         height: 30,
                       ),

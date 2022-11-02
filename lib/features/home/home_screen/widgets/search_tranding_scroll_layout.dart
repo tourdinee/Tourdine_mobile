@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tourdine/constants/color.dart';
 import 'package:tourdine/constants/constants.dart';
 
 import '../../../../constants/text_style.dart';
@@ -91,8 +92,8 @@ class SearchAndTrendingScrollLayout extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                           color: (index == currentIndex)
-                              ? Colors.red
-                              : Colors.red.withAlpha(120),
+                              ? mainColor
+                              : mainColor.withAlpha(120),
                           borderRadius: BorderRadius.circular(.5)),
                       height: 3,
                     ),

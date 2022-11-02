@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../constants/color.dart';
@@ -6,6 +7,7 @@ import '../../../../constants/constants.dart';
 import '../../../../constants/text_style.dart';
 import '../../../auth_screens/logic/logic.dart';
 import '../../../trending_screen/trending_screen.dart';
+import '../provider/provider.dart';
 import 'widgets.dart';
 
 class SearchTendingBottomStaticLayout extends StatelessWidget {
@@ -109,16 +111,18 @@ class _SearchBarState extends State<SearchBar> {
             child: SvgPicture.asset("$iconsPath/search.svg"),
           ),
           Expanded(
-            child: TextField(
-                onChanged: (value) {
-                  setState(() {});
-                },
-                controller: widget.controller,
-                textAlign: TextAlign.center,
-                decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  hintText: "Find Restaurants",
-                )),
+            child: Consumer(builder: (context, ref, child) {
+              return TextField(
+                  onChanged: (value) {
+                    ref.read(searchBarText.notifier).update((state) => value);
+                  },
+                  controller: widget.controller,
+                  textAlign: TextAlign.center,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "Find Restaurants",
+                  ));
+            }),
           ),
           IconButton(
             onPressed: () {},
