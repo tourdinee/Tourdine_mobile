@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tourdine/constants/text_style.dart';
 
+import '../../../constants/color.dart';
 import '../logic/logic.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -37,7 +38,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       decoration: InputDecoration(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
         errorBorder:
-            const OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
+            OutlineInputBorder(borderSide: BorderSide(color: mainColor)),
         focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black87)),
         fillColor: const Color(0x44ffffff),

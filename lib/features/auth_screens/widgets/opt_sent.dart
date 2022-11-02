@@ -21,11 +21,10 @@ class OtpSent extends StatelessWidget {
           children: [
             const Image(
               image: AssetImage("$imagesPath/successlogo.png"),
-              height: 200,
-              width: 200,
             ),
+            const SizedBox(height: 16),
             Text(
-              "OTP has been sent",
+              "OTP sent",
               style: textStyle2,
             )
           ],

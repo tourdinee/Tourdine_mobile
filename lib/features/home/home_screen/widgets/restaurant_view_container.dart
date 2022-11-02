@@ -23,7 +23,7 @@ class RestaurantsViewContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => navigateTo(const RestaurantScreen(), context),
+      onTap: () => navigateTo(const RestaurantScreen(), context, true),
       child: SizedBox(
         height: 259,
         width: 380,

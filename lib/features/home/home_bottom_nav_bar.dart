@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tourdine/constants/color.dart';
+import 'package:tourdine/constants/constants.dart';
+import 'package:tourdine/features/home/favorite_screen/favorite_screen.dart';
+import 'package:tourdine/features/home/profile_screen/profile_screen.dart';
 
 import 'home_screen/home_screen.dart';
 
@@ -10,22 +15,31 @@ class HomeBottomNavBar extends StatefulWidget {
 }
 
 class _HomeBottomNavBarState extends State<HomeBottomNavBar> {
+  List<Widget> screen = [
+    const Home(),
+    const FavoriteScreen(),
+    const SizedBox(),
+    const Center(
+      child: Text("Notification"),
+    ),
+    const ProfileScreen()
+  ];
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: const SafeArea(
-        child: Home(),
+      body: SafeArea(
+        child: screen[currentIndex],
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xffff0000),
+        backgroundColor: mainColor,
         onPressed: () {},
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: const Color(0xffff0000),
+        selectedItemColor: mainColor,
         onTap: (value) {
           if (value != 2) {
             currentIndex = value;
@@ -34,54 +48,33 @@ class _HomeBottomNavBarState extends State<HomeBottomNavBar> {
         },
         currentIndex: currentIndex,
         type: BottomNavigationBarType.fixed,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            activeIcon: Icon(
-              Icons.home,
-              color: Color(0xffff0000),
-            ),
-            icon: Icon(
-              Icons.home_outlined,
-              color: Color(0xffff0000),
-            ),
+            activeIcon: SvgPicture.asset("$iconsPath/home-selected.svg"),
+            icon: SvgPicture.asset("$iconsPath/home.svg"),
             label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.star_outline,
-              color: Color(0xffff0000),
-            ),
-            activeIcon: Icon(
-              Icons.star,
-              color: Color(0xffff0000),
-            ),
+            icon: SvgPicture.asset("$iconsPath/favorite.svg"),
+            activeIcon: SvgPicture.asset("$iconsPath/favorite-selected.svg"),
             label: "Favorites",
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: SizedBox(),
             activeIcon: SizedBox(),
             label: "",
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.notifications_outlined,
-              color: Color(0xffff0000),
-            ),
+            icon: SvgPicture.asset("$iconsPath/notification.svg"),
             activeIcon: Icon(
               Icons.notifications,
-              color: Color(0xffff0000),
+              color: mainColor,
             ),
             label: "Notifications",
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person_outline,
-              color: Color(0xffff0000),
-            ),
-            activeIcon: Icon(
-              Icons.person,
-              color: Color(0xffff0000),
-            ),
+            icon: SvgPicture.asset("$iconsPath/profile.svg"),
+            activeIcon: SvgPicture.asset("$iconsPath/profile-selected.svg"),
             label: "Profile",
           ),
         ],

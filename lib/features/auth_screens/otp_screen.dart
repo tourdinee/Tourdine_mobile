@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tourdine/constants/constants.dart';
+import 'package:tourdine/constants/text_style.dart';
+import 'package:tourdine/features/auth_screens/widgets/account_verified.dart';
 
 import '../../helpers/loading/loading_screen.dart';
-import '../welcome_screen/welcome_screen.dart';
-import 'logic/navigate_to.dart';
 import 'widgets/widget.dart';
 
 class OtpScreen extends StatefulWidget {
@@ -31,8 +31,6 @@ class _OtpScreenState extends State<OtpScreen> {
         padding: const EdgeInsets.only(left: 30, right: 30, top: 40),
         child: Center(
           child: SizedBox(
-            // height: MediaQuery.of(context).size.height * 0.9,
-            // width: 400,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -76,9 +74,7 @@ class _OtpScreenState extends State<OtpScreen> {
                     maxLines: 1,
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
+                const SizedBox(height: 20),
                 TextButton(
                     onPressed: () async {
                       LoadingScreen().show(context: context, text: "");
@@ -96,17 +92,20 @@ class _OtpScreenState extends State<OtpScreen> {
                     },
                     child: Text(
                       "Resend OTP",
-                      style: GoogleFonts.montserrat(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white),
+                      style: textStyle2red.copyWith(shadows: [
+                        const Shadow(color: Colors.white, offset: Offset(0, -5))
+                      ]),
                     )),
                 GestureDetector(
                   onTap: () async {
                     LoadingScreen().show(context: context, text: "");
                     await Future.delayed(const Duration(seconds: 2),
                         () => LoadingScreen().hide());
-                    navigateTo(const WelcomeScreen(), context, true);
+                    showCupertinoModalPopup(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const AccountVerified();
+                        });
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 30),

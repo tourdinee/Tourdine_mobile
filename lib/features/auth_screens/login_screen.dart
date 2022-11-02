@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void loginInCredential() {
     if (formKey.currentState!.validate()) {
-      navigateTo(const OtpScreen(), context, true);
+      navigateTo(const OtpScreen(), context);
     }
   }
 
@@ -90,8 +90,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       GestureDetector(
-                        onTap: () =>
-                            navigateTo(const ForgetPasswordScreen(), context),
+                        onTap: () => navigateTo(
+                            const ForgetPasswordScreen(), context, true),
                         child: Text(
                           "Forget Password?",
                           style: textStyle2,
