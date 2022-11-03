@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:tourdine/features/home/home_screen/home_screen.dart';
 
 import '../../../constants/text_style.dart';
+import 'view_post_btn_modal.dart';
 
 class ReviewScreen extends StatefulWidget {
   const ReviewScreen({super.key});
@@ -191,6 +192,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
                     } else {
                       FocusManager.instance.primaryFocus?.unfocus();
                       showCupertinoModalPopup(
+                          barrierDismissible: false,
                           context: context,
                           builder: (context) =>
                               Center(child: ViewPostModalBtn()));
@@ -233,64 +235,6 @@ class _ReviewScreenState extends State<ReviewScreen> {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class ViewPostModalBtn extends StatelessWidget {
-  const ViewPostModalBtn({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 200,
-      width: 300,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.red, width: 2),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Icon(
-              Icons.check_circle,
-              color: Colors.green,
-              size: 50,
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              "Posted",
-              style: GoogleFonts.montserrat(
-                  color: Colors.black,
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              width: 150,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  "View Post",
-                  style: GoogleFonts.montserrat(
-                    fontSize: 17,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-              ),
-            )
-          ],
         ),
       ),
     );
