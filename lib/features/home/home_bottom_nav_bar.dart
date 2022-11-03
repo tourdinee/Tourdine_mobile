@@ -4,6 +4,7 @@ import 'package:tourdine/constants/color.dart';
 import 'package:tourdine/constants/constants.dart';
 import 'package:tourdine/features/home/favorite_screen/favorite_screen.dart';
 import 'package:tourdine/features/home/profile_screen/profile_screen.dart';
+import 'package:tourdine/features/home/review_screen/review_screen.dart';
 
 import 'home_screen/home_screen.dart';
 
@@ -18,13 +19,15 @@ class _HomeBottomNavBarState extends State<HomeBottomNavBar> {
   List<Widget> screen = [
     const Home(),
     const FavoriteScreen(),
-    const SizedBox(),
+    const ReviewScreen(),
     const Center(
       child: Text("Notification"),
     ),
     const ProfileScreen()
   ];
   int currentIndex = 0;
+  bool isReviewScreen = false;
+  int indexBeforeReview = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,15 +37,27 @@ class _HomeBottomNavBarState extends State<HomeBottomNavBar> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: mainColor,
-        onPressed: () {},
-        child: const Icon(Icons.add),
+        onPressed: () {
+          if (!isReviewScreen) {
+            indexBeforeReview = currentIndex;
+            currentIndex = 2;
+            isReviewScreen = !isReviewScreen;
+          } else {
+            currentIndex = indexBeforeReview;
+            isReviewScreen = !isReviewScreen;
+          }
+          setState(() {});
+        },
+        child: isReviewScreen ? const Icon(Icons.close) : const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: mainColor,
         onTap: (value) {
           if (value != 2) {
+            isReviewScreen = false;
             currentIndex = value;
+            indexBeforeReview = value;
             setState(() {});
           }
         },
@@ -66,10 +81,8 @@ class _HomeBottomNavBarState extends State<HomeBottomNavBar> {
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset("$iconsPath/notification.svg"),
-            activeIcon: Icon(
-              Icons.notifications,
-              color: mainColor,
-            ),
+            activeIcon:
+                SvgPicture.asset("$iconsPath/notification-selected.svg"),
             label: "Notifications",
           ),
           BottomNavigationBarItem(
