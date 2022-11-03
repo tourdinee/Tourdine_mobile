@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tourdine/constants/text_style.dart';
 import 'package:tourdine/features/auth_screens/login_screen.dart';
+import 'package:tourdine/features/home/review_screen/review_screen.dart';
 
 void main(List<String> args) {
   runApp(const App());
@@ -30,7 +31,7 @@ class App extends StatelessWidget {
           titleTextStyle: titleTextStyle,
         ),
       ),
-      home: const LoginScreen(),
+      home: LoginScreen(),
     );
   }
 }

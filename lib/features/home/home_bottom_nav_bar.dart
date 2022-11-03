@@ -4,6 +4,7 @@ import 'package:tourdine/constants/color.dart';
 import 'package:tourdine/constants/constants.dart';
 import 'package:tourdine/features/home/favorite_screen/favorite_screen.dart';
 import 'package:tourdine/features/home/profile_screen/profile_screen.dart';
+import 'package:tourdine/features/home/review_screen/review_screen.dart';
 
 import 'home_screen/home_screen.dart';
 
@@ -34,7 +35,10 @@ class _HomeBottomNavBarState extends State<HomeBottomNavBar> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: mainColor,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => ReviewScreen()));
+        },
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

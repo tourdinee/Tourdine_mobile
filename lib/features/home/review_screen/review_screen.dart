@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tourdine/features/home/home_screen/home_screen.dart';
 
 import '../../../constants/text_style.dart';
 
@@ -38,13 +40,16 @@ class _ReviewScreenState extends State<ReviewScreen> {
   ];
   String? selectedItem = "Please choose a resturant";
 
+  bool isThereText = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
+        reverse: true,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
           child: Column(
             children: [
               Center(
@@ -152,6 +157,13 @@ class _ReviewScreenState extends State<ReviewScreen> {
               TextField(
                 controller: reviewDetailsController,
                 maxLines: 10,
+                onChanged: (value) {
+                  if (reviewDetailsController.text.isEmpty) {
+                    isThereText = false;
+                  } else {
+                    isThereText = true;
+                  }
+                },
                 decoration: InputDecoration(
                   focusColor: Colors.red,
                   hintText: "Write your experience",
@@ -168,18 +180,117 @@ class _ReviewScreenState extends State<ReviewScreen> {
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: 10,
               ),
               SizedBox(
                 width: 100,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (reviewDetailsController.text.isEmpty) {
+                      print("Please add a review");
+                    } else {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                      showCupertinoModalPopup(
+                          context: context,
+                          builder: (context) =>
+                              Center(child: ViewPostModalBtn()));
+                    }
+                  },
+
+                  //  Navigator.push(context,
+                  //         MaterialPageRoute(builder: (context) => Home()));
+
                   child: Text("Post"),
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: reviewDetailsController.text.isEmpty
+                          ? Colors.grey
+                          : Colors.red),
                 ),
-              )
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: Colors.red),
+                  child: Center(
+                    child: Text(
+                      "x",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class ViewPostModalBtn extends StatelessWidget {
+  const ViewPostModalBtn({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 200,
+      width: 300,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Colors.red, width: 2),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Icon(
+              Icons.check_circle,
+              color: Colors.green,
+              size: 50,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              "Posted",
+              style: GoogleFonts.montserrat(
+                  color: Colors.black,
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+              width: 150,
+              height: 50,
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  "View Post",
+                  style: GoogleFonts.montserrat(
+                    fontSize: 17,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+              ),
+            )
+          ],
         ),
       ),
     );
