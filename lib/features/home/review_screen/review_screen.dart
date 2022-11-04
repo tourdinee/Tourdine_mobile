@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tourdine/features/home/review_screen/view_post_btn_modal.dart';
 
 class ReviewScreen extends StatefulWidget {
   const ReviewScreen({super.key});
@@ -166,7 +168,12 @@ class _ReviewScreenState extends State<ReviewScreen> {
                 SizedBox(
                   width: 100,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showCupertinoModalPopup(
+                          barrierDismissible: false,
+                          context: context,
+                          builder: (context) => ViewPostModalBtn());
+                    },
                     style:
                         ElevatedButton.styleFrom(backgroundColor: Colors.red),
                     child: const Text("Post"),

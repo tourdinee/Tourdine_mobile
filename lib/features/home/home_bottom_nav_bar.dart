@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tourdine/constants/color.dart';
 import 'package:tourdine/constants/constants.dart';
 import 'package:tourdine/features/home/favorite_screen/favorite_screen.dart';
+import 'package:tourdine/features/home/notification_screen/notfication_page.dart';
 import 'package:tourdine/features/home/profile_screen/profile_screen.dart';
 import 'package:tourdine/features/home/review_screen/review_screen.dart';
 
@@ -20,9 +21,7 @@ class _HomeBottomNavBarState extends State<HomeBottomNavBar> {
     const Home(),
     const FavoriteScreen(),
     const ReviewScreen(),
-    const Center(
-      child: Text("Notification"),
-    ),
+    const Notifications(),
     const ProfileScreen()
   ];
   int currentIndex = 0;
