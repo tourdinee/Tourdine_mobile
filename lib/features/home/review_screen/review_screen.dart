@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tourdine/features/home/review_screen/show_error_modal.dart';
 import 'package:tourdine/features/home/review_screen/view_post_btn_modal.dart';
 
 class ReviewScreen extends StatefulWidget {
@@ -38,6 +39,8 @@ class _ReviewScreenState extends State<ReviewScreen> {
   ];
   String? selectedItem = "Please choose a resturant";
 
+  bool isTyping = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,6 +49,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
+          reverse: true,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             child: Column(
@@ -144,6 +148,24 @@ class _ReviewScreenState extends State<ReviewScreen> {
                 const SizedBox(height: 35),
                 TextField(
                   controller: reviewDetailsController,
+                  onChanged: (value) => {
+                    if (reviewDetailsController.text.isEmpty)
+                      {
+                        setState(
+                          () {
+                            isTyping = false;
+                          },
+                        )
+                      }
+                    else
+                      {
+                        setState(
+                          () {
+                            isTyping = true;
+                          },
+                        )
+                      }
+                  },
                   maxLines: 10,
                   decoration: InputDecoration(
                     focusColor: Colors.red,
@@ -169,13 +191,21 @@ class _ReviewScreenState extends State<ReviewScreen> {
                   width: 100,
                   child: ElevatedButton(
                     onPressed: () {
-                      showCupertinoModalPopup(
-                          barrierDismissible: false,
-                          context: context,
-                          builder: (context) => ViewPostModalBtn());
+                      if (reviewDetailsController.text.isEmpty) {
+                        showCupertinoModalPopup(
+                            barrierDismissible: false,
+                            context: context,
+                            builder: (context) => ShowErrorModal());
+                      } else {
+                        showCupertinoModalPopup(
+                            barrierDismissible: false,
+                            context: context,
+                            builder: (context) => ViewPostModalBtn());
+                      }
                     },
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            isTyping == true ? Colors.red : Colors.grey),
                     child: const Text("Post"),
                   ),
                 ),

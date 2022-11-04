@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:tourdine/features/home/home_bottom_nav_bar.dart';
 import 'package:tourdine/features/home/notification_screen/notfication_page.dart';
 
-class ViewPostModalBtn extends StatelessWidget {
-  const ViewPostModalBtn({
+class ShowErrorModal extends StatelessWidget {
+  const ShowErrorModal({
     Key? key,
   }) : super(key: key);
 
@@ -24,15 +24,15 @@ class ViewPostModalBtn extends StatelessWidget {
           child: Column(
             children: [
               Icon(
-                Icons.check_circle,
-                color: Colors.green,
+                Icons.error_outline_outlined,
+                color: Colors.red,
                 size: 50,
               ),
               SizedBox(
                 height: 20,
               ),
               Text(
-                "Posted",
+                "Please leave a review",
                 style: GoogleFonts.montserrat(
                     color: Colors.black,
                     fontSize: 17,
@@ -46,15 +46,10 @@ class ViewPostModalBtn extends StatelessWidget {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Notifications(),
-                      ),
-                    );
+                    Navigator.pop(context);
                   },
                   child: Text(
-                    "View Post",
+                    "Close",
                     style: GoogleFonts.montserrat(
                       fontSize: 17,
                     ),
