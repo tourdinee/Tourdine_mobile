@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tourdine/features/home/notification_screen/review_tile2.dart';
 
-import '../../restaurant_screen/widgets/review_tile.dart';
-
 class Notifications extends StatelessWidget {
   const Notifications({super.key});
 
@@ -10,20 +8,16 @@ class Notifications extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Notifications"),
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.arrow_back),
-        ),
+        title: const Text("Notifications"),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
           child: Column(
             children: [
-              Container(
-                height: 800,
-                width: 700,
+              Expanded(
                 child: ListView.separated(
+                  shrinkWrap: true,
                   itemCount: 15,
                   itemBuilder: (context, index) {
                     return const ReviewTile2();

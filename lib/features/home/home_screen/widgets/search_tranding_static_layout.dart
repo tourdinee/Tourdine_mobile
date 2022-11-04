@@ -114,7 +114,7 @@ class _SearchBarState extends State<SearchBar> {
             child: Consumer(builder: (context, ref, child) {
               return TextField(
                   onChanged: (value) {
-                    ref.read(searchBarText.notifier).update((state) => value);
+                    ref.read(myProvider.notifier).updateText(value);
                   },
                   controller: widget.controller,
                   textAlign: TextAlign.center,
@@ -124,13 +124,17 @@ class _SearchBarState extends State<SearchBar> {
                   ));
             }),
           ),
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              "$iconsPath/filter-add.svg",
-              color: Colors.black,
-            ),
-          ),
+          Consumer(builder: (context, ref, _) {
+            return IconButton(
+              onPressed: () {
+                ref.read(isFilterProvider.notifier).updateFilter();
+              },
+              icon: SvgPicture.asset(
+                "$iconsPath/filter-add.svg",
+                color: Colors.black,
+              ),
+            );
+          }),
         ],
       ),
     );

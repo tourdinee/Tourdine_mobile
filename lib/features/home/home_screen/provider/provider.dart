@@ -1,13 +1,26 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final searchBarText = StateProvider<String>((ref) => "");
+class SearchBarText extends StateNotifier<String> {
+  SearchBarText(super.state);
 
-class SearchBarText extends ChangeNotifier {
-  String _text = '';
-  String get text => _text;
-  void setText(String value) {
-    _text = value;
-    notifyListeners();
+  void updateText(String text) {
+    state = text;
   }
 }
+
+final myProvider = StateNotifierProvider((ref) {
+  return SearchBarText("");
+});
+
+final text = ValueNotifier("_value");
+
+class IsFilterNotifier extends StateNotifier<bool> {
+  IsFilterNotifier() : super(false);
+
+  void updateFilter() {
+    state = !state;
+  }
+}
+
+final isFilterProvider = StateNotifierProvider((ref) => IsFilterNotifier());

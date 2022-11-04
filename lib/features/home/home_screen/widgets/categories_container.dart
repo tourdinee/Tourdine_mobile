@@ -44,7 +44,7 @@ class CategoriesContainers extends StatelessWidget {
                       name: "Farm City",
                       address:
                           "15 Admiralty Way Lekki Phase 1, Lagos/36 Ogudu Road, Ojota, Lagos.",
-                      categories: "",
+                      categories: "Budget Friendly",
                       images: "$imagesPath/farm_city.png",
                       isOpen: true,
                     ),
@@ -62,7 +62,7 @@ class CategoriesContainers extends StatelessWidget {
                       name: "Chicken Republic",
                       address:
                           "Lekki / Gbagada / Ajah / Ikorodu / Alimosho / Ojudu Berger ",
-                      categories: "fast food",
+                      categories: "Fast food",
                       images: "$imagesPath/chicken_republic.png",
                       isOpen: true,
                     ),
