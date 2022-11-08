@@ -44,7 +44,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   void signUpCredential() {
     if (formKey.currentState!.validate()) {
-      navigateTo(const OtpScreen(), context);
+      navigateTo(const OtpScreen(), context, false, true);
     }
   }
 

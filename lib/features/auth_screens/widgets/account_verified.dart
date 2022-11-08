@@ -32,10 +32,8 @@ class AccountVerified extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               ElevatedButton(
-                onPressed: () => navigateTo(
-                  const WelcomeScreen(),
-                  context,
-                ),
+                onPressed: () =>
+                    navigateTo(const WelcomeScreen(), context, false, true),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: mainColor,
                 ),

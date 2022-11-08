@@ -68,6 +68,7 @@ class CategoriesContainers extends StatelessWidget {
                     ),
                   ),
                   context,
+                  true,
                   true),
             ),
           ],

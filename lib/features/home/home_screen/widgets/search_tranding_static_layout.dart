@@ -59,6 +59,7 @@ class SearchTendingBottomStaticLayout extends StatelessWidget {
                         ),
                       ),
                       context,
+                      true,
                       true),
                   child: Text(
                     "See all (20)",

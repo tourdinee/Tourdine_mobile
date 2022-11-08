@@ -57,6 +57,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 SizedBox(
                   height: 50,
                   child: TextField(
+                    style: GoogleFonts.montserrat(color: Colors.white),
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white.withOpacity(0.18),

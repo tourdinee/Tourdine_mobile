@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tourdine/constants/constants.dart';
 import 'package:tourdine/constants/text_style.dart';
 import 'package:tourdine/features/auth_screens/forget_password.dart';
-import 'package:tourdine/features/auth_screens/otp_screen.dart';
 import 'package:tourdine/features/auth_screens/signup_screen.dart';
 import 'package:tourdine/features/home/home_bottom_nav_bar.dart';
-import 'package:tourdine/features/home/home_screen/home_screen.dart';
 import 'package:tourdine/features/welcome_screen/welcome_screen.dart';
 
 import 'logic/logic.dart';
@@ -42,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void loginInCredential() {
     if (formKey.currentState!.validate()) {
-      navigateTo(const HomeBottomNavBar(), context);
+      navigateTo(const HomeBottomNavBar(), context, false, true);
     }
   }
 
@@ -71,7 +69,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: SizedBox(),
                   ),
                   SkipButton(
-                    callback: () => navigateTo(const WelcomeScreen(), context),
+                    callback: () =>
+                        navigateTo(const WelcomeScreen(), context, false, true),
                   ),
                   const Expanded(
                     flex: 4,
