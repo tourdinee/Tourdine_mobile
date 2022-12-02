@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tourdine/constants/constants.dart';
 import 'package:tourdine/features/auth_screens/logic/logic.dart';
 import 'package:tourdine/features/restaurant_screen/restuarant_screen.dart';
+import 'package:tourdine/models/restaurant.dart';
 
 import '../../../../constants/text_style.dart';
 import 'components.dart';
@@ -8,22 +10,20 @@ import 'components.dart';
 class RestaurantsViewContainer extends StatelessWidget {
   const RestaurantsViewContainer({
     Key? key,
-    required this.name,
-    required this.address,
-    required this.categories,
-    required this.images,
-    required this.isOpen,
+    required this.restaurant,
   }) : super(key: key);
-  final String name;
-  final String address;
-  final String categories;
-  final String images;
-  final bool isOpen;
+  final Restaurant restaurant;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => navigateTo(const RestaurantScreen(), context, true, true),
+      onTap: () => navigateTo(
+          RestaurantScreen(
+            restaurant: restaurant,
+          ),
+          context,
+          true,
+          true),
       child: SizedBox(
         height: 259,
         width: 380,
@@ -31,8 +31,8 @@ class RestaurantsViewContainer extends StatelessWidget {
           margin: const EdgeInsets.all(6),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            image: DecorationImage(
-              image: AssetImage(images),
+            image: const DecorationImage(
+              image: AssetImage("$imagesPath/restaurant_img_1.png"),
               fit: BoxFit.cover,
             ),
           ),
@@ -50,9 +50,8 @@ class RestaurantsViewContainer extends StatelessWidget {
                         borderRadius: BorderRadius.circular(2),
                         color: const Color(0xffeeeeee),
                       ),
-                      child: Text(isOpen ? "OPEN" : "CLOSE",
-                          style: const TextStyle(
-                              color: Colors.green, fontSize: 12)),
+                      child: const Text(/* isOpen ? "OPEN" : "CLOSE" */ "OPEN",
+                          style: TextStyle(color: Colors.green, fontSize: 12)),
                     ),
                     Container(
                       padding: const EdgeInsets.all(2),
@@ -82,14 +81,15 @@ class RestaurantsViewContainer extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          name,
+                          restaurant.name,
                           style: textStyle1,
                         ),
-                        RestaurantCategoriesContainer(categories: categories)
+                        RestaurantCategoriesContainer(
+                            categories: restaurant.category)
                       ],
                     ),
                     Text(
-                      address,
+                      restaurant.address,
                       style: smallTextStyle,
                     ),
                   ],

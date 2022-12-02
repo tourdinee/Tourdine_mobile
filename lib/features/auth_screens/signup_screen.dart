@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:tourdine/constants/constants.dart';
 import 'package:tourdine/constants/text_style.dart';
 import 'package:tourdine/features/auth_screens/login_screen.dart';
 import 'package:tourdine/features/auth_screens/otp_screen.dart';
@@ -44,13 +43,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   void signUpCredential() {
     if (formKey.currentState!.validate()) {
-      navigateTo(const OtpScreen(), context, false, true);
+      navigateTo(
+          OtpScreen(
+            name: usernameController.text,
+          ),
+          context,
+          false,
+          true);
     }
   }
 
   void setProfilePicture() async {
     final res = await pickImage();
-    print("picture: $res");
     if (res.isNotEmpty) {
       picture = res;
       setState(() {});
@@ -61,13 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: DecoratedBox(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            colorFilter: ColorFilter.mode(Color(0xaa000000), BlendMode.darken),
-            image: AssetImage("$imagesPath/signup_bg.png"),
-            fit: BoxFit.cover,
-          ),
-        ),
+        decoration: backgroundDecoration("signup_bg.png"),
         child: SafeArea(
           child: CustomScrollView(slivers: [
             SliverFillRemaining(
@@ -86,7 +84,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ],
                     ),
-                    const Expanded(flex: 1, child: SizedBox()),
+                    const Expanded(flex: 2, child: SizedBox()),
                     ProfilePicture(
                       picture: picture,
                       setProfilePic: setProfilePicture,
@@ -109,7 +107,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       text: "Sign Up",
                       callback: signUpCredential,
                     ),
-                    const SizedBox(height: 20),
+                    const Expanded(
+                      flex: 1,
+                      child: SizedBox(height: 20),
+                    ),
                     RichText(
                       textScaleFactor: .9,
                       text: TextSpan(
@@ -128,7 +129,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         style: textStyle2style,
                       ),
                     ),
-                    const Expanded(flex: 1, child: SizedBox()),
+                    const Expanded(flex: 2, child: SizedBox()),
                   ],
                 ),
               ),

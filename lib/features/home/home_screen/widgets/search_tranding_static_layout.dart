@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tourdine/models/restaurant.dart';
 
 import '../../../../constants/color.dart';
 import '../../../../constants/constants.dart';
@@ -8,7 +9,6 @@ import '../../../../constants/text_style.dart';
 import '../../../auth_screens/logic/logic.dart';
 import '../../../trending_screen/trending_screen.dart';
 import '../provider/provider.dart';
-import 'widgets.dart';
 
 class SearchTendingBottomStaticLayout extends StatelessWidget {
   const SearchTendingBottomStaticLayout({
@@ -48,15 +48,11 @@ class SearchTendingBottomStaticLayout extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () => navigateTo(
-                      const CategoriesScreen(
+                      CategoriesScreen(
                         title: "Trending Restaurants",
-                        child: RestaurantsViewContainer(
-                          name: "Farm City",
-                          address: "36 Ogudu Road, Ojota, Lagos.",
-                          images: "$imagesPath/farm_city.png",
-                          categories: "budget friendly",
-                          isOpen: true,
-                        ),
+                        restaurantList: restaurantList
+                            .where((element) => element.reviewCount > 100)
+                            .toList(),
                       ),
                       context,
                       true,

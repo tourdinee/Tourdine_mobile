@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tourdine/features/home/home_bottom_nav_bar.dart';
-import 'package:tourdine/features/home/notification_screen/notfication_page.dart';
 
 class ShowErrorModal extends StatelessWidget {
   const ShowErrorModal({
@@ -23,12 +21,12 @@ class ShowErrorModal extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Icon(
+              const Icon(
                 Icons.error_outline_outlined,
                 color: Colors.red,
                 size: 50,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Text(
@@ -38,7 +36,7 @@ class ShowErrorModal extends StatelessWidget {
                     fontSize: 17,
                     fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               SizedBox(
@@ -48,13 +46,13 @@ class ShowErrorModal extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                   child: Text(
                     "Close",
                     style: GoogleFonts.montserrat(
                       fontSize: 17,
                     ),
                   ),
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                 ),
               )
             ],

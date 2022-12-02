@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tourdine/constants/constants.dart';
-import 'package:tourdine/constants/text_style.dart';
-import 'package:tourdine/features/auth_screens/logic/logic.dart';
-import 'package:tourdine/features/auth_screens/login_screen.dart';
-import 'package:tourdine/features/home/profile_screen/password_screen.dart';
 
 import '../../../constants/color.dart';
+import '../../../constants/constants.dart';
+import '../../../constants/text_style.dart';
+import '../../auth_screens/logic/logic.dart';
+import '../../auth_screens/login_screen.dart';
 import 'language_screen.dart';
+import 'password_screen.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
@@ -43,74 +43,74 @@ class SettingScreen extends StatelessWidget {
               SubSetting(text: "Privacy", callback: () {}),
               SubSetting(text: "Term and Condition", callback: () {}),
               SubSetting(
-                  text: "Logout",
-                  callback: () {
-                    bool isLogout = false;
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return Material(
-                          color: Colors.transparent,
-                          child: Center(
-                            child: SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.75,
-                              height: 140,
-                              child: Container(
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(12),
-                                    border: Border.all(color: mainColor)),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Are you sure you want to Exit",
-                                      style: textStyle1.copyWith(
-                                          color: Colors.black87),
-                                    ),
-                                    const SizedBox(height: 16),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                                backgroundColor: Colors.white,
-                                                side: BorderSide(
-                                                    color: mainColor)),
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                              "No",
-                                              style: textStyle1.copyWith(
-                                                  color:
-                                                      const Color(0xff000000)),
-                                            )),
-                                        const SizedBox(
-                                          width: 25,
-                                        ),
-                                        ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                                backgroundColor: mainColor),
-                                            onPressed: () {
-                                              isLogout = true;
-                                              navigateTo(
-                                                  const LoginScreen(), context);
-                                            },
-                                            child: const Text("Yes"))
-                                      ],
-                                    )
-                                  ],
-                                ),
+                text: "Logout",
+                callback: () {
+                  bool isLogout = false;
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return Material(
+                        color: Colors.transparent,
+                        child: Center(
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.75,
+                            height: 140,
+                            child: Container(
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(color: mainColor)),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Are you sure you want to Exit",
+                                    style: textStyle1.copyWith(
+                                        color: Colors.black87),
+                                  ),
+                                  const SizedBox(height: 16),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                              backgroundColor: Colors.white,
+                                              side:
+                                                  BorderSide(color: mainColor)),
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                            "No",
+                                            style: textStyle1.copyWith(
+                                                color: const Color(0xff000000)),
+                                          )),
+                                      const SizedBox(
+                                        width: 25,
+                                      ),
+                                      ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor: mainColor),
+                                        onPressed: () {
+                                          isLogout = true;
+                                          navigateTo(
+                                              const LoginScreen(), context);
+                                        },
+                                        child: const Text("Yes"),
+                                      ),
+                                    ],
+                                  )
+                                ],
                               ),
                             ),
                           ),
-                        );
-                      },
-                    );
-                  }),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
             ],
           ),
         ),

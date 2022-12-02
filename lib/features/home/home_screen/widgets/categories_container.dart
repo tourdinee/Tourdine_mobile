@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tourdine/features/auth_screens/logic/logic.dart';
-import 'package:tourdine/features/home/home_screen/widgets/widgets.dart';
 import 'package:tourdine/features/trending_screen/trending_screen.dart';
 
 import '../../../../constants/constants.dart';
 import '../../../../constants/text_style.dart';
+import '../../../../models/restaurant.dart';
 
 class CategoriesContainers extends StatelessWidget {
   const CategoriesContainers({
@@ -21,15 +21,11 @@ class CategoriesContainers extends StatelessWidget {
               text: "Fining Dining",
               image: "fine_dinning.png",
               callback: () => navigateTo(
-                  const CategoriesScreen(
+                  CategoriesScreen(
                     title: "Fining Dinning",
-                    child: RestaurantsViewContainer(
-                      name: "Slow Lagos",
-                      address: "2 Musa Yar’Adua Street V.I Lagos",
-                      categories: "Fine Dining",
-                      images: "$imagesPath/slow_lagos.png",
-                      isOpen: true,
-                    ),
+                    restaurantList: restaurantList
+                        .where((element) => element.category == "fine dining")
+                        .toList(),
                   ),
                   context,
                   true),
@@ -38,16 +34,12 @@ class CategoriesContainers extends StatelessWidget {
               text: "Budget Friendly",
               image: "budget_friendly.png",
               callback: () => navigateTo(
-                  const CategoriesScreen(
+                  CategoriesScreen(
                     title: "Budget Friendly",
-                    child: RestaurantsViewContainer(
-                      name: "Farm City",
-                      address:
-                          "15 Admiralty Way Lekki Phase 1, Lagos/36 Ogudu Road, Ojota, Lagos.",
-                      categories: "Budget Friendly",
-                      images: "$imagesPath/farm_city.png",
-                      isOpen: true,
-                    ),
+                    restaurantList: restaurantList
+                        .where(
+                            (element) => element.category == "budget friendly")
+                        .toList(),
                   ),
                   context,
                   true),
@@ -56,16 +48,11 @@ class CategoriesContainers extends StatelessWidget {
               text: "Fast Food",
               image: "fast_food.png",
               callback: () => navigateTo(
-                  const CategoriesScreen(
+                  CategoriesScreen(
                     title: "Fast Food",
-                    child: RestaurantsViewContainer(
-                      name: "Chicken Republic",
-                      address:
-                          "Lekki / Gbagada / Ajah / Ikorodu / Alimosho / Ojudu Berger ",
-                      categories: "Fast food",
-                      images: "$imagesPath/chicken_republic.png",
-                      isOpen: true,
-                    ),
+                    restaurantList: restaurantList
+                        .where((element) => element.category == "fast food")
+                        .toList(),
                   ),
                   context,
                   true,

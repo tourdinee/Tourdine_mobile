@@ -1,4 +1,4 @@
-String? validate(String? value, String hintText) {
+String? validate(String? value, String hintText, [String? confirmText]) {
   if (hintText == "Email") {
     RegExp expression = RegExp(
         r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$");
@@ -11,6 +11,10 @@ String? validate(String? value, String hintText) {
 
   if (hintText == "Display Name") {
     return value!.length >= 2 ? null : "enter a valid display name";
+  }
+
+  if (hintText == "Confirm Password") {
+    return value! == confirmText ? null : "enter a valid display name";
   }
 
   return null;

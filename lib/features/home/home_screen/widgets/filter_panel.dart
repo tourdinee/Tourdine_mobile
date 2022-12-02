@@ -14,6 +14,7 @@ class FilterPanel extends StatefulWidget {
 
 class _FilterPanelState extends State<FilterPanel> {
   int selectedIndex = 0;
+  RangeValues initialRage = const RangeValues(0, 100);
   @override
   Widget build(BuildContext context) {
     return Positioned(
@@ -58,10 +59,14 @@ class _FilterPanelState extends State<FilterPanel> {
               const SizedBox(height: 10),
               const FilterProperty(title: "Distances"),
               RangeSlider(
-                values: const RangeValues(10, 100),
-                onChanged: (value) => value,
+                values: initialRage,
+                onChanged: (value) {
+                  setState(() {
+                    initialRage = value;
+                  });
+                },
                 max: 100,
-                min: 10,
+                min: 0,
                 activeColor: mainColor,
               ),
               const FilterProperty(title: "Ratings"),

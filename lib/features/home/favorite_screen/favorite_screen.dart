@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:tourdine/constants/constants.dart';
 import 'package:tourdine/features/home/home_screen/widgets/widgets.dart';
+import 'package:tourdine/models/restaurant.dart';
 
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({
     super.key,
+    required this.restaurantList,
   });
+  final List<Restaurant> restaurantList;
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +22,11 @@ class FavoriteScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: ListView.builder(
-                  itemCount: 6,
+                  itemCount: restaurantList.length,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    return const RestaurantsViewContainer(
-                      name: "name",
-                      address: "address",
-                      categories: "categories",
-                      images: "$imagesPath/photo_1.png",
-                      isOpen: true,
+                    return RestaurantsViewContainer(
+                      restaurant: restaurantList[index],
                     );
                   },
                 ),

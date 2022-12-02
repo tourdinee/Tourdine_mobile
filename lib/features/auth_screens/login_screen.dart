@@ -1,27 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:tourdine/constants/constants.dart';
-import 'package:tourdine/constants/text_style.dart';
-import 'package:tourdine/features/auth_screens/forget_password.dart';
-import 'package:tourdine/features/auth_screens/signup_screen.dart';
-import 'package:tourdine/features/home/home_bottom_nav_bar.dart';
-import 'package:tourdine/features/welcome_screen/welcome_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../constants/text_style.dart';
+import '../home/home_bottom_nav_bar.dart';
+import 'forget_password.dart';
 import 'logic/logic.dart';
+import 'signup_screen.dart';
 import 'widgets/widget.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   late TextEditingController emailController;
   late TextEditingController passwordController;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  String message = "";
 
   @override
   void initState() {
@@ -34,11 +31,10 @@ class _LoginScreenState extends State<LoginScreen> {
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
-
     super.dispose();
   }
 
-  void loginInCredential() {
+  void loginInCredential() async {
     if (formKey.currentState!.validate()) {
       navigateTo(const HomeBottomNavBar(), context, false, true);
     }
@@ -48,13 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: DecoratedBox(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            colorFilter: ColorFilter.mode(Color(0xaa000000), BlendMode.darken),
-            image: AssetImage("$imagesPath/login_bg.png"),
-            fit: BoxFit.cover,
-          ),
-        ),
+        decoration: backgroundDecoration("login_bg.png"),
         child: SafeArea(
             child: CustomScrollView(slivers: [
           SliverFillRemaining(
@@ -64,14 +54,10 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Expanded(
-                    flex: 3,
-                    child: SizedBox(),
-                  ),
-                  SkipButton(
-                    callback: () =>
-                        navigateTo(const WelcomeScreen(), context, false, true),
-                  ),
+                  const Expanded(flex: 3, child: SizedBox()),
+                  SkipButton(callback: () async {
+                    navigateTo(const HomeBottomNavBar(), context, false, true);
+                  }),
                   const Expanded(
                     flex: 4,
                     child: SizedBox(),
@@ -91,8 +77,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       GestureDetector(
-                        onTap: () => navigateTo(
-                            const ForgetPasswordScreen(), context, true),
+                        onTap: () {
+                          navigateTo(
+                              ForgetPasswordScreen(
+                                email: emailController.text,
+                              ),
+                              context,
+                              true,
+                              true);
+                        },
                         child: Text(
                           "Forget Password?",
                           style: textStyle2,

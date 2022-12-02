@@ -31,7 +31,7 @@ class SignUpFormInputContainer extends StatelessWidget {
           const SizedBox(height: 20),
           CustomTextField(
             controller: usernameController,
-            hintText: "Name",
+            hintText: "Display Name",
           ),
           const SizedBox(height: 20),
           CustomTextField(
@@ -43,7 +43,7 @@ class SignUpFormInputContainer extends StatelessWidget {
           CustomTextField(
             controller: confirmPasswordController,
             isObscure: true,
-            hintText: "Password",
+            hintText: "Confiirm Password",
           ),
         ],
       ),

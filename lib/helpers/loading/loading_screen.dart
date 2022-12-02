@@ -1,7 +1,6 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:tourdine/constants/color.dart';
@@ -105,13 +104,11 @@ class LoadingScreen {
 
     return LoadingScreenController(
       close: () {
-        log("close");
         _text.close();
         overlay.remove();
         return true;
       },
       update: (text) {
-        log("open");
         if (text != null) {
           _text.add(text);
         }

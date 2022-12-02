@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import '../../../constants/color.dart';
 import '../../../constants/constants.dart';
 import '../../../constants/text_style.dart';
-import '../../welcome_screen/welcome_screen.dart';
 import '../logic/logic.dart';
+import '../login_screen.dart';
 
-class AccountVerified extends StatelessWidget {
-  const AccountVerified({
+class ResetPasswordSentAlert extends StatelessWidget {
+  const ResetPasswordSentAlert({
     Key? key,
-    required this.name,
+    required this.controller,
   }) : super(key: key);
 
-  final String name;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +28,16 @@ class AccountVerified extends StatelessWidget {
               const Image(
                 image: AssetImage("$imagesPath/successlogo.png"),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 20),
               Text(
-                "Your Account has been verified",
+                "A Password Reset has been sent\nto your email\n${controller.text}",
+                textAlign: TextAlign.center,
                 style: textStyle2,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () =>
-                    navigateTo(WelcomeScreen(name: name), context, false, true),
+                    navigateTo(const LoginScreen(), context, false),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: mainColor,
                 ),

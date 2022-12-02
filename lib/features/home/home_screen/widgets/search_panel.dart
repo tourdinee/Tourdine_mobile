@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tourdine/models/restaurant.dart';
 
 import '../../../../constants/constants.dart';
 import '../../../../constants/text_style.dart';
@@ -33,7 +34,7 @@ class _SearchPanelState extends State<SearchPanel> {
             borderRadius: BorderRadius.circular(8),
           ),
           child: ListView.builder(
-            itemCount: dummyString.length + 1,
+            itemCount: restaurantList.length + 1,
             shrinkWrap: true,
             itemBuilder: (context, index) {
               if (index == 0) {
@@ -70,7 +71,7 @@ class _SearchPanelState extends State<SearchPanel> {
                         : Colors.white,
                   ),
                   child: Text(
-                    dummyString[index - 1],
+                    restaurantList[index - 1].name,
                     style: smallTextStyle.copyWith(
                       fontSize: 14,
                       color: (index == selectedIndex)
@@ -88,4 +89,4 @@ class _SearchPanelState extends State<SearchPanel> {
   }
 }
 
-List<String> dummyString = ["Farm City", "Fish Farm", "Ofada boy", "KFC"];
+// List<String> dummyString = ["Farm City", "Fish Farm", "Ofada boy", "KFC"];

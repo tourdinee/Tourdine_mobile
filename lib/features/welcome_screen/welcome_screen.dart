@@ -7,7 +7,9 @@ import 'package:tourdine/features/home/home_bottom_nav_bar.dart';
 import '../../constants/color.dart';
 
 class WelcomeScreen extends StatefulWidget {
-  const WelcomeScreen({super.key});
+  const WelcomeScreen({super.key, required this.name});
+
+  final String name;
 
   @override
   State<WelcomeScreen> createState() => _WelcomeScreenState();
@@ -37,7 +39,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Hello John,",
+                      Text("Hello ${widget.name},",
                           style: GoogleFonts.montserrat(
                               fontSize: 32,
                               fontWeight: FontWeight.w700,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tourdine/models/restaurant.dart' show Restaurant;
 
 import '../home/home_screen/widgets/widgets.dart';
 
@@ -6,11 +7,11 @@ class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({
     super.key,
     required this.title,
-    required this.child,
+    required this.restaurantList,
   });
 
   final String title;
-  final Widget child;
+  final List<Restaurant> restaurantList;
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +38,11 @@ class CategoriesScreen extends StatelessWidget {
               const SizedBox(height: 20),
               Expanded(
                 child: ListView.builder(
-                  itemCount: 6,
+                  itemCount: restaurantList.length,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    return child;
+                    final Restaurant restaurant = restaurantList[index];
+                    return RestaurantsViewContainer(restaurant: restaurant);
                   },
                 ),
               )

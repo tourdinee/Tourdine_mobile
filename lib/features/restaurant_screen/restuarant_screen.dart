@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:tourdine/constants/constants.dart';
 import 'package:tourdine/constants/text_style.dart';
+import 'package:tourdine/models/restaurant.dart';
 
 import '../auth_screens/logic/navigate_to.dart';
 import '../menu_photo/menu_photo_screen.dart';
 import 'widgets/widgets.dart';
 
 class RestaurantScreen extends StatelessWidget {
-  const RestaurantScreen({super.key});
+  const RestaurantScreen({super.key, required this.restaurant});
+  final Restaurant restaurant;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class RestaurantScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Farm City",
+                            restaurant.name,
                             style: textStyle2.copyWith(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold),
@@ -37,21 +39,21 @@ class RestaurantScreen extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 10),
-                      const ContactListTile(
+                      ContactListTile(
                         imgPath: "globe.svg",
-                        title: "Ogudu@farmcityltd.com",
+                        title: restaurant.website,
                       ),
-                      const ContactListTile(
+                      ContactListTile(
                         imgPath: "location.svg",
-                        title: "36 Ogudu Road, Ojota, Lagos.",
+                        title: restaurant.address,
                       ),
                       const ContactListTile(
                         imgPath: "clock.svg",
                         title: "Opening Hours: Monday - Sunday (12am-11pm)",
                       ),
-                      const ContactListTile(
+                      ContactListTile(
                         imgPath: "call-red.svg",
-                        title: "+2347002000700",
+                        title: restaurant.contact.toString(),
                       ),
                       const SizedBox(height: 10),
                       Row(

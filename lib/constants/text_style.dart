@@ -64,3 +64,9 @@ TextStyle smallestTextStyle = GoogleFonts.montserrat(
   fontSize: 8,
   color: mainColor,
 );
+
+TextStyle authButtonTextStyle = GoogleFonts.montserrat(
+  fontWeight: FontWeight.w500,
+  fontSize: 14,
+  color: Colors.white,
+);

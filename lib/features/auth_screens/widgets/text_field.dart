@@ -45,16 +45,16 @@ class _CustomTextFieldState extends State<CustomTextField> {
         filled: true,
         errorStyle: const TextStyle(color: Color(0xffffffff)),
         prefixIcon: Icon(
-          (widget.hintText == "Name")
+          (widget.hintText.contains("Name"))
               ? Icons.person_outline
-              : (widget.hintText == "Email")
+              : (widget.hintText.contains("Email"))
                   ? Icons.email_outlined
                   : Icons.lock_outline,
           color: const Color(0xffffffff),
         ),
         hintText: widget.hintText,
         hintStyle: textStyle1,
-        suffixIcon: (widget.hintText == "Password")
+        suffixIcon: (widget.hintText.contains("Password"))
             ? GestureDetector(
                 child: Icon(
                   isVisible ? Icons.visibility : Icons.visibility_off,

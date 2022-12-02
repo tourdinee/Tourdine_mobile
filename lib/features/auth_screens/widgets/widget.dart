@@ -5,3 +5,6 @@ export 'sign_in_form_inputs.dart';
 export 'profile_picture.dart';
 export 'skip_button.dart';
 export 'opt_sent.dart';
+export 'reset_password_sent_alert.dart';
+export 'background_image.dart';
+export 'resend_opt_button.dart';
