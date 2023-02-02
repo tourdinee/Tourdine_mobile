@@ -43,10 +43,11 @@ class ForgetPasswordScreen extends StatelessWidget {
                       () => LoadingScreen().hide(),
                     );
                     showCupertinoModalPopup(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return ResetPasswordSentAlert(controller: controller);
-                        });
+                      context: context,
+                      builder: (BuildContext context) {
+                        return ResetPasswordSentAlert(controller: controller);
+                      },
+                    );
                   },
                   text: "Reset Password"),
               const Expanded(flex: 2, child: SizedBox(height: 80)),

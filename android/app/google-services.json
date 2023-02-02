@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "87436149221",
+    "project_id": "tourdine-22",
+    "storage_bucket": "tourdine-22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:87436149221:android:4393bb6c31386b0b232f0c",
+        "android_client_info": {
+          "package_name": "com.example.tourdine"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "87436149221-mt6oi1i2olj74ei10co6ml8a1ou2gph6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_XE3JxCZgckuV_-MHq59cwtQ3C36tQ5g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "87436149221-mt6oi1i2olj74ei10co6ml8a1ou2gph6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "87436149221-9f95f3bcilucorb450ecsnmsmb7c7j7g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tourdine"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

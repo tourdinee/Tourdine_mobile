@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tourdine/features/auth_screens/logic/logic.dart';
-import 'package:tourdine/features/trending_screen/trending_screen.dart';
 
 import '../../../../constants/constants.dart';
+import '../../../../constants/dummy_data.dart';
 import '../../../../constants/text_style.dart';
-import '../../../../models/restaurant.dart';
+import '../../../../models/restaurant_category.dart';
+import '../../../auth_screens/logic/navigate_to.dart';
+import '../../../trending_screen/trending_screen.dart';
 
 class CategoriesContainers extends StatelessWidget {
   const CategoriesContainers({
@@ -16,49 +17,24 @@ class CategoriesContainers extends StatelessWidget {
     return Expanded(
       child: SingleChildScrollView(
         child: Column(
-          children: [
-            CategoryContainer(
-              text: "Fining Dining",
-              image: "fine_dinning.png",
-              callback: () => navigateTo(
-                  CategoriesScreen(
-                    title: "Fining Dinning",
-                    restaurantList: restaurantList
-                        .where((element) => element.category == "fine dining")
-                        .toList(),
-                  ),
-                  context,
-                  true),
-            ),
-            CategoryContainer(
-              text: "Budget Friendly",
-              image: "budget_friendly.png",
-              callback: () => navigateTo(
-                  CategoriesScreen(
-                    title: "Budget Friendly",
-                    restaurantList: restaurantList
-                        .where(
-                            (element) => element.category == "budget friendly")
-                        .toList(),
-                  ),
-                  context,
-                  true),
-            ),
-            CategoryContainer(
-              text: "Fast Food",
-              image: "fast_food.png",
-              callback: () => navigateTo(
-                  CategoriesScreen(
-                    title: "Fast Food",
-                    restaurantList: restaurantList
-                        .where((element) => element.category == "fast food")
-                        .toList(),
-                  ),
-                  context,
-                  true,
-                  true),
-            ),
-          ],
+          children: RestaurantCategory.values
+              .map(
+                (category) => CategoryContainer(
+                  text: category.title,
+                  image: category.photo,
+                  callback: () {
+                    navigateTo(
+                        CategoriesScreen(
+                          title: category.title,
+                          restaurantList: restaurantList,
+                        ),
+                        context,
+                        true,
+                        false);
+                  },
+                ),
+              )
+              .toList(),
         ),
       ),
     );

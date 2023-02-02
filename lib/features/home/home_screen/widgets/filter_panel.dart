@@ -31,9 +31,15 @@ class _FilterPanelState extends State<FilterPanel> {
             maxWidth: MediaQuery.of(context).size.width - 40,
           ),
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(8),
-          ),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8),
+              boxShadow: const [
+                BoxShadow(
+                  offset: Offset(.2, .2),
+                  blurRadius: 1,
+                  blurStyle: BlurStyle.outer,
+                )
+              ]),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

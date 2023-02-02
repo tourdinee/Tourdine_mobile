@@ -2,13 +2,20 @@ import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:tourdine/firebase_options.dart';
 
 import '../../models/auth_user.dart';
-import '../exception/auth_exception.dart';
+import 'auth_exception.dart';
 import 'authentication.dart';
 
 class Auth extends Authentication {
   FirebaseAuth auth = FirebaseAuth.instance;
+
+  @override
+  Future<void> initialize() async {
+    await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform);
+  }
 
   @override
   Future<AuthUser> createAccount(
@@ -35,11 +42,6 @@ class Auth extends Authentication {
     } catch (e) {
       throw GenericAuthException();
     }
-  }
-
-  @override
-  Future<void> initialize() async {
-    await Firebase.initializeApp();
   }
 
   @override
@@ -74,7 +76,13 @@ class Auth extends Authentication {
 
   @override
   Future<void> resetPassword({required String email}) async {
-    await auth.sendPasswordResetEmail(email: email);
+    try {
+      await auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException {
+      throw ResetPasswordErrorException();
+    } catch (e) {
+      throw ResetPasswordErrorException();
+    }
   }
 
   @override
@@ -86,6 +94,21 @@ class Auth extends Authentication {
   Future<void> sendEmailVerification({required String email}) async {
     if (currentUser != null) {
       await auth.currentUser!.sendEmailVerification();
+    } else {
+      throw UserNotLoggedinException();
+    }
+  }
+
+  @override
+  Future<void> deleteAccount({required String email}) async {
+    if (currentUser != null) {
+      try {
+        await auth.currentUser!.delete();
+      } on FirebaseAuthException catch (e) {
+        if (e.code == "requires-recent-login") {
+          throw UserNeedToLoginAuthenticateException();
+        }
+      }
     } else {
       throw UserNotLoggedinException();
     }

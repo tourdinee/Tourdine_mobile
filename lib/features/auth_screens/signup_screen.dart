@@ -1,8 +1,15 @@
+import 'dart:developer';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:tourdine/constants/text_style.dart';
 import 'package:tourdine/features/auth_screens/login_screen.dart';
 import 'package:tourdine/features/auth_screens/otp_screen.dart';
+import 'package:tourdine/helpers/loading/loading_screen.dart';
+import 'package:tourdine/services/auth/auth_exception.dart';
+import 'package:tourdine/services/auth/auth_service.dart';
+import 'package:tourdine/services/cloud/cloud_store.dart';
+import 'package:tourdine/utils/show_snack_bar.dart';
 
 import 'logic/logic.dart';
 import 'widgets/widget.dart';
@@ -41,15 +48,63 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.dispose();
   }
 
-  void signUpCredential() {
+  void signUpCredential() async {
     if (formKey.currentState!.validate()) {
-      navigateTo(
-          OtpScreen(
-            name: usernameController.text,
-          ),
-          context,
-          false,
-          true);
+      LoadingScreen().show(context: context, text: "text");
+      try {
+        final user = await AuthService.fromFirebase().createAccount(
+          email: emailController.text,
+          password: passwordController.text,
+        );
+        await CloudStore().addUser(
+          email: emailController.text,
+          name: usernameController.text,
+          picture: picture,
+          id: user.id,
+        );
+        LoadingScreen().hide();
+        navigateTo(
+            OtpScreen(
+              name: usernameController.text,
+            ),
+            context,
+            false,
+            true);
+        // case "email-already-in-use":
+        //   throw EmailAlreadyExitException();
+        // case "invalid-email":
+        //   throw InvalidEmailException();
+        // case "weak-password":
+        //   throw WeakPasswordException();
+        // default:
+        //   throw GenericAuthException();
+      } on EmailAlreadyExitException {
+        log("email-already-in-use");
+        showSnackBar(
+          context: context,
+          text: "An account exist with this email, sign in",
+        );
+      } on InvalidEmailException {
+        log("invalid-email");
+        showSnackBar(
+          context: context,
+          text: "Email is invalid",
+        );
+      } on WeakPasswordException {
+        log("weak-password");
+        showSnackBar(
+          context: context,
+          text: "weak password",
+        );
+      } on GenericAuthException {
+        log("other error");
+        showSnackBar(
+          context: context,
+          text: "sign up error",
+        );
+      }
+      emailController.text = "";
+      LoadingScreen().hide();
     }
   }
 

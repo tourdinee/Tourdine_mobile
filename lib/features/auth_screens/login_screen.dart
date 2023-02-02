@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tourdine/helpers/loading/loading_screen.dart';
+import 'package:tourdine/services/auth/auth_exception.dart';
+import 'package:tourdine/services/auth/auth_service.dart';
+import 'package:tourdine/utils/show_snack_bar.dart';
 
 import '../../constants/text_style.dart';
 import '../home/home_bottom_nav_bar.dart';
@@ -23,6 +27,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   void initState() {
     super.initState();
+
     emailController = TextEditingController();
     passwordController = TextEditingController();
   }
@@ -36,7 +41,20 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   void loginInCredential() async {
     if (formKey.currentState!.validate()) {
-      navigateTo(const HomeBottomNavBar(), context, false, true);
+      LoadingScreen().show(context: context, text: "text");
+      try {
+        await AuthService.fromFirebase().login(
+            email: emailController.text, password: passwordController.text);
+        if (!context.mounted) return;
+        LoadingScreen().hide();
+        navigateTo(const HomeBottomNavBar(), context, false, true);
+      } on InvalidCredentialException {
+        LoadingScreen().hide();
+        showSnackBar(context: context, text: "Invalid credential");
+      } on GenericAuthException {
+        LoadingScreen().hide();
+        showSnackBar(context: context, text: "Signin Error");
+      }
     }
   }
 

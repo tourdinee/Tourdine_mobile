@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tourdine/constants/text_style.dart';
 import 'package:tourdine/features/home/home_screen/provider/provider.dart';
-import 'package:tourdine/models/restaurant.dart';
 
+import '../../../constants/dummy_data.dart';
 import 'widgets/widgets.dart';
 
 class Home extends StatefulWidget {
@@ -28,8 +28,8 @@ class _HomeState extends State<Home> {
                 SearchTendingBottomStaticLayout(
                   controller: controller,
                 ),
-                SearchAndTrendingScrollLayout(
-                  restaurantList: restaurantList,
+                TrendingScrollLayout(
+                  restaurantList: restaurantList.sublist(0, 5),
                 ),
                 Consumer(
                   builder: (context, ref, child) {
@@ -43,8 +43,7 @@ class _HomeState extends State<Home> {
                       return const SizedBox();
                     }
                   },
-                )
-                // if (controller.text.isNotEmpty) const SearchPanel(),
+                ),
               ],
             ),
             const SizedBox(height: 20),

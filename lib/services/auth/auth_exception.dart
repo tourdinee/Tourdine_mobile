@@ -13,3 +13,9 @@ class WeakPasswordException implements Exception {}
 class InvalidCredentialException implements Exception {}
 
 class UserNotLoggedinException implements Exception {}
+
+class UserNeedToLoginAuthenticateException implements Exception {}
+
+class CreateAccountFailedException implements Exception {}
+
+class ResetPasswordErrorException implements Exception {}

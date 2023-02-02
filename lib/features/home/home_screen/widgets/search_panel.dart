@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tourdine/models/restaurant.dart';
 
 import '../../../../constants/constants.dart';
+import '../../../../constants/dummy_data.dart';
 import '../../../../constants/text_style.dart';
 
 class SearchPanel extends StatefulWidget {
@@ -30,9 +30,15 @@ class _SearchPanelState extends State<SearchPanel> {
             maxWidth: MediaQuery.of(context).size.width - 40,
           ),
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(8),
-          ),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8),
+              boxShadow: const [
+                BoxShadow(
+                  offset: Offset(.2, .2),
+                  blurRadius: 1,
+                  blurStyle: BlurStyle.outer,
+                )
+              ]),
           child: ListView.builder(
             itemCount: restaurantList.length + 1,
             shrinkWrap: true,
@@ -88,5 +94,3 @@ class _SearchPanelState extends State<SearchPanel> {
     );
   }
 }
-
-// List<String> dummyString = ["Farm City", "Fish Farm", "Ofada boy", "KFC"];

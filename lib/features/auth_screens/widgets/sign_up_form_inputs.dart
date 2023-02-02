@@ -43,7 +43,8 @@ class SignUpFormInputContainer extends StatelessWidget {
           CustomTextField(
             controller: confirmPasswordController,
             isObscure: true,
-            hintText: "Confiirm Password",
+            hintText: "Confirm Password",
+            confirmText: passwordController.text,
           ),
         ],
       ),

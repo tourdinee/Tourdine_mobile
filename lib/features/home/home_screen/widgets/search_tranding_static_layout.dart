@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tourdine/models/restaurant.dart';
 
 import '../../../../constants/color.dart';
 import '../../../../constants/constants.dart';
+import '../../../../constants/dummy_data.dart';
 import '../../../../constants/text_style.dart';
 import '../../../auth_screens/logic/logic.dart';
 import '../../../trending_screen/trending_screen.dart';
@@ -50,9 +50,7 @@ class SearchTendingBottomStaticLayout extends StatelessWidget {
                   onPressed: () => navigateTo(
                       CategoriesScreen(
                         title: "Trending Restaurants",
-                        restaurantList: restaurantList
-                            .where((element) => element.reviewCount > 100)
-                            .toList(),
+                        restaurantList: restaurantList,
                       ),
                       context,
                       true,

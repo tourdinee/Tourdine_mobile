@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../constants/constants.dart';
 import '../../../constants/text_style.dart';
-import '../../restaurant_screen/widgets/rate_container.dart';
 
-class ReviewTile2 extends StatelessWidget {
-  const ReviewTile2({
+class NotificationTile extends StatelessWidget {
+  const NotificationTile({
     Key? key,
   }) : super(key: key);
 
@@ -27,7 +25,7 @@ class ReviewTile2 extends StatelessWidget {
             shape: BoxShape.circle,
             image: DecorationImage(
               image: AssetImage(
-                "$imagesPath/chicken_republic.png",
+                "$imagesPath/profile_pic.png",
               ),
             ),
           ),
@@ -35,22 +33,25 @@ class ReviewTile2 extends StatelessWidget {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text("Chicken Republic"),
+            const Text("Tayo"),
             const SizedBox(height: 4),
             Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
-                style: GoogleFonts.montserrat(fontSize: 12)),
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+              style: smallestTextStyle.copyWith(
+                color: Colors.black38,
+              ),
+            ),
           ],
         ),
         trailing: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            RateBox(
-              style: smallTextStyle.copyWith(color: Colors.black),
-            ),
-            Text(
-              "8:30 am",
-              style: smallTextStyle.copyWith(color: Colors.black),
+            Padding(
+              padding: const EdgeInsets.only(top: 6.0),
+              child: Text(
+                "8:30 am",
+                style: smallTextStyle.copyWith(color: Colors.black),
+              ),
             ),
           ],
         ),

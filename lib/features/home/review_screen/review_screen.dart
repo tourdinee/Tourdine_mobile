@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tourdine/constants/dummy_data.dart';
 import 'package:tourdine/features/home/review_screen/show_error_modal.dart';
 import 'package:tourdine/features/home/review_screen/view_post_btn_modal.dart';
 
@@ -13,16 +16,33 @@ class ReviewScreen extends StatefulWidget {
 }
 
 class _ReviewScreenState extends State<ReviewScreen> {
-  TextEditingController reviewDetailsController = TextEditingController();
+  late TextEditingController reviewDetailsController;
+  List<String> get restaurants => getNames();
+
+  List<String> getNames() {
+    List<String> list = [];
+    for (var element in restaurantList) {
+      list.add(element.name);
+    }
+    return list;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    reviewDetailsController = TextEditingController();
+    // restaurants = List.generate(
+    //     restaurantList.length, (index) => restaurantList[index].name);
+    log("restaurant: $restaurants");
+  }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     reviewDetailsController.dispose();
   }
 
-  List<String> resturants = [
+  List<String> lis = [
     "Please choose a resturant",
     "Fish Farm",
     "Black Bell",
@@ -37,7 +57,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
     "KFC",
     "Dominos"
   ];
-  String? selectedItem = "Please choose a resturant";
+  String? selectedItem;
 
   bool isTyping = false;
 
@@ -70,12 +90,12 @@ class _ReviewScreenState extends State<ReviewScreen> {
                     ],
                   ),
                   child: DropdownButtonFormField(
-                    value: selectedItem,
-                    items: resturants
+                    value: selectedItem ?? restaurants[0],
+                    items: restaurants
                         .map(
-                          (e) => DropdownMenuItem(
-                            value: e,
-                            child: Text(e),
+                          (restaurantName) => DropdownMenuItem(
+                            value: restaurantName,
+                            child: Text(restaurantName),
                           ),
                         )
                         .toList(),

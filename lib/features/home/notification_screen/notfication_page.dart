@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tourdine/features/home/notification_screen/review_tile2.dart';
+
+import 'notification_tile.dart';
 
 class Notifications extends StatelessWidget {
   const Notifications({super.key});
@@ -20,7 +21,7 @@ class Notifications extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: 15,
                   itemBuilder: (context, index) {
-                    return const ReviewTile2();
+                    return const NotificationTile();
                   },
                   separatorBuilder: (context, index) =>
                       const SizedBox(height: 8),

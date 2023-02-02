@@ -6,8 +6,8 @@ import 'package:tourdine/features/home/favorite_screen/favorite_screen.dart';
 import 'package:tourdine/features/home/notification_screen/notfication_page.dart';
 import 'package:tourdine/features/home/profile_screen/profile_screen.dart';
 import 'package:tourdine/features/home/review_screen/review_screen.dart';
-import 'package:tourdine/models/restaurant.dart';
 
+import '../../constants/dummy_data.dart';
 import 'home_screen/home_screen.dart';
 
 class HomeBottomNavBar extends StatefulWidget {

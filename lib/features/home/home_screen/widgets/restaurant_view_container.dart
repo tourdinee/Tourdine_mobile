@@ -85,7 +85,7 @@ class RestaurantsViewContainer extends StatelessWidget {
                           style: textStyle1,
                         ),
                         RestaurantCategoriesContainer(
-                            categories: restaurant.category)
+                            categories: restaurant.category.title)
                       ],
                     ),
                     Text(

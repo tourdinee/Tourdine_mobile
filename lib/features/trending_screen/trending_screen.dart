@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tourdine/models/restaurant.dart' show Restaurant;
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../models/restaurant.dart';
+import '../home/home_screen/provider/provider.dart';
 import '../home/home_screen/widgets/widgets.dart';
 
-class CategoriesScreen extends StatelessWidget {
+class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({
     super.key,
     required this.title,
@@ -14,8 +16,27 @@ class CategoriesScreen extends StatelessWidget {
   final List<Restaurant> restaurantList;
 
   @override
+  State<CategoriesScreen> createState() => _CategoriesScreenState();
+}
+
+class _CategoriesScreenState extends State<CategoriesScreen> {
+  late TextEditingController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    TextEditingController controller = TextEditingController();
+    List<Restaurant> restaurants = widget.restaurantList;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -24,25 +45,48 @@ class CategoriesScreen extends StatelessWidget {
           },
           icon: const Icon(Icons.arrow_back_ios),
         ),
-        title: Text(title),
+        title: Text(widget.title),
       ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              SearchBar(
-                showShadow: true,
-                controller: controller,
+              SizedBox(
+                child: Column(
+                  children: [
+                    SearchBar(
+                      showShadow: true,
+                      controller: controller,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 6),
+                      child: Consumer(
+                        builder: (context, ref, child) {
+                          String text = ref.watch(myProvider) as String;
+                          bool isFilter = ref.watch(isFilterProvider) as bool;
+                          if (text.isNotEmpty && isFilter == false) {
+                            return const SearchPanel();
+                          } else if (isFilter) {
+                            return const FilterPanel();
+                          } else {
+                            return const SizedBox();
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: 20),
               Expanded(
                 child: ListView.builder(
-                  itemCount: restaurantList.length,
+                  itemCount: restaurants.length,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    final Restaurant restaurant = restaurantList[index];
-                    return RestaurantsViewContainer(restaurant: restaurant);
+                    return RestaurantsViewContainer(
+                      restaurant: restaurants[index],
+                    );
                   },
                 ),
               )

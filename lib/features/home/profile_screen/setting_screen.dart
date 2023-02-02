@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tourdine/services/auth/auth_service.dart';
 
 import '../../../constants/color.dart';
 import '../../../constants/constants.dart';
@@ -92,7 +93,9 @@ class SettingScreen extends StatelessWidget {
                                       ElevatedButton(
                                         style: ElevatedButton.styleFrom(
                                             backgroundColor: mainColor),
-                                        onPressed: () {
+                                        onPressed: () async {
+                                          await AuthService.fromFirebase()
+                                              .logout();
                                           isLogout = true;
                                           navigateTo(
                                               const LoginScreen(), context);

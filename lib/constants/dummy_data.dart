@@ -1,1 +1,150 @@
+import '../models/restaurant.dart';
+import '../models/restaurant_category.dart';
 
+List<Restaurant> restaurantList = [
+  Restaurant(
+      id: "1",
+      name: "Browns Café & Restaurant",
+      address: "Ikeja and Victoria Island neighbourhood of Lagos",
+      email: "browncafe@gmail.com",
+      city: "lagos",
+      openHour: 24,
+      photos:
+          "http://www.travelstart.com.ng/blog/wp-content/uploads/2014/06/Browns-Cafe-and-Restaurant.jpg",
+      reviewCount: 263,
+      contact: 08021626324,
+      website: "browncafe.dine.ng",
+      category: RestaurantCategory.fineDining),
+  Restaurant(
+      id: "2",
+      name: "Ocean Basket & Restaurant",
+      address: "Victoria Island, Lagos",
+      email: "Ocean Basket@gmail.com",
+      city: "lagos",
+      openHour: 24,
+      photos:
+          "http://www.travelstart.com.ng/blog/wp-content/uploads/2014/09/ocean-basket-Lagos.png",
+      reviewCount: 263,
+      contact: 08021626324,
+      website: "Ocean Basket.dine.ng",
+      category: RestaurantCategory.budgetFriendly),
+  Restaurant(
+      id: "3",
+      name: "The Bungalow & Restaurant",
+      address: "Victoria Island Lagos",
+      email: "TheBungalow@gmail.com",
+      city:
+          "https://www.travelstart.com.ng/blog/wp-content/uploads/2014/09/Bungalow-restaurant.jpg",
+      openHour: 24,
+      photos: "photos",
+      reviewCount: 263,
+      contact: 08021626324,
+      website: "TheBungalow.dine.ng",
+      category: RestaurantCategory.fastFood),
+  Restaurant(
+      id: "4",
+      name: "Terra Kulture Food Lounge & Restaurant",
+      address:
+          " Plot 1376, Tiamiyu Savage, Off Ahmadu Bello Way, Victoria Island, Lagos",
+      email: "TerraKultureFoodLounge@gmail.com",
+      city: "lagos",
+      openHour: 24,
+      photos:
+          "http://www.travelstart.com.ng/blog/wp-content/uploads/2014/08/Terra-Kulture.jpg",
+      reviewCount: 263,
+      contact: 08021626324,
+      website: "TerraKultureFoodLounge.dine.ng",
+      category: RestaurantCategory.budgetFriendly),
+  Restaurant(
+      id: "5",
+      name: "Metisse Restaurant",
+      address: "Etim Inyang Crescent, AIM Plaza,Victoria Island, Lagos",
+      email: "Metisse@gmail.com",
+      city: "lagos",
+      openHour: 24,
+      photos:
+          "http://www.travelstart.com.ng/blog/wp-content/uploads/2014/09/Metisse.jpg",
+      reviewCount: 263,
+      contact: 08021626324,
+      website: "Metisse.dine.ng",
+      category: RestaurantCategory.budgetFriendly),
+  Restaurant(
+      id: "6",
+      name: "BluCabana Restaurant & Cafe",
+      address: "Mabushi, Abuja",
+      email: "BluCabanaRestaurant&Cafe@gmail.com",
+      city: "lagos",
+      openHour: 24,
+      photos:
+          "https://www.travelstart.com.ng/blog/wp-content/uploads/2014/09/blucabana-restaurant-Abuja.jpg",
+      reviewCount: 263,
+      contact: 08021626324,
+      website: "BluCabanaRestaurant&Cafe.dine.ng",
+      category: RestaurantCategory.fastFood),
+  Restaurant(
+      id: "7",
+      name: "Nkoyo Restaurant",
+      address:
+          "Bathurst Street, K-city Plaza, Off Aminu Kano Crescent, Wuse II, Abuja",
+      email: "NkoyoRestaurant@gmail.com",
+      city: "lagos",
+      openHour: 24,
+      photos:
+          "http://www.travelstart.com.ng/blog/wp-content/uploads/2014/09/Nkoyo-Restaurant.jpg",
+      reviewCount: 263,
+      contact: 08021626324,
+      website: "NkoyoRestaurant.dine.ng",
+      category: RestaurantCategory.budgetFriendly),
+  Restaurant(
+      id: "8",
+      name: "Jevinik Restaurant",
+      address: "Located in Lagos, Abuja, Port Harcourt, Aba and Owerri",
+      email: "JevinikRestaurant@gmail.com",
+      city: "lagos",
+      openHour: 24,
+      photos:
+          "https://www.travelstart.com.ng/blog/wp-content/uploads/2014/04/Jevinik-Restaurant-Abuja-1024x768.jpg",
+      reviewCount: 263,
+      contact: 08021626324,
+      website: "JevinikRestaurant.dine.ng",
+      category: RestaurantCategory.fastFood),
+  Restaurant(
+      id: "9",
+      name: "Fulani Pool Bar and Restaurant",
+      address: "Transcorp Hilton Hotel, Abuja",
+      email: "FulaniPoolBarandRestaurant@gmail.com",
+      city: "lagos",
+      openHour: 24,
+      photos:
+          "http://www.travelstart.com.ng/blog/wp-content/uploads/2014/04/Fulani-Pool-Bar-and-Restaurant.jpg",
+      reviewCount: 263,
+      contact: 08021626324,
+      website: "FulaniPoolBarandRestaurant.dine.ng",
+      category: RestaurantCategory.fineDining),
+  Restaurant(
+      id: "10",
+      name: "Elephant Bar & Restaurant",
+      address: "Sheraton Hotel, Abuja",
+      email: "ElephantBar@gmail.com",
+      city: "lagos",
+      openHour: 24,
+      photos:
+          "http://www.travelstart.com.ng/blog/wp-content/uploads/2014/09/ElephantBar_inside1.jpg",
+      reviewCount: 263,
+      contact: 08021626324,
+      website: "ElephantBar.dine.ng",
+      category: RestaurantCategory.budgetFriendly),
+  Restaurant(
+      id: "11",
+      name: "Kilimanjaro Restaurant",
+      address: "Lagos, Owerri, Enugu, Uyo, Port Harcourt Abuja",
+      email: "KilimanjaroRestaurant@gmail.com",
+      city: "lagos",
+      openHour: 24,
+      photos:
+          "https://www.travelstart.com.ng/blog/wp-content/uploads/2014/09/abuja_kilimanjaro.jpg",
+      reviewCount: 263,
+      contact: 08021626324,
+      website: "KilimanjaroRestaurant.dine.ng",
+      category: RestaurantCategory.fineDining),
+];

@@ -5,16 +5,18 @@ import '../../../constants/color.dart';
 import '../logic/logic.dart';
 
 class CustomTextField extends StatefulWidget {
-  const CustomTextField({
-    Key? key,
-    required this.controller,
-    required this.hintText,
-    this.isObscure = false,
-  }) : super(key: key);
+  const CustomTextField(
+      {Key? key,
+      required this.controller,
+      required this.hintText,
+      this.isObscure = false,
+      this.confirmText = ""})
+      : super(key: key);
 
   final TextEditingController controller;
   final String hintText;
   final bool isObscure;
+  final String confirmText;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -26,7 +28,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
-      validator: (val) => validate(val, widget.hintText),
+      validator: (val) => validate(val, widget.confirmText),
       obscureText: widget.isObscure ? isVisible : false,
       enableSuggestions: false,
       autocorrect: (widget.hintText == "Password") ? false : true,

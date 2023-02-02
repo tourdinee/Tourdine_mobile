@@ -1,6 +1,8 @@
 import 'package:tourdine/models/auth_user.dart';
 
 abstract class Authentication {
+  const Authentication();
+
   AuthUser? get currentUser;
 
   Future<void> initialize();
@@ -20,4 +22,6 @@ abstract class Authentication {
   Future<void> sendEmailVerification({required String email});
 
   Future<void> resetPassword({required String email});
+
+  Future<void> deleteAccount({required String email});
 }
